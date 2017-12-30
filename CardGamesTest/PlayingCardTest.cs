@@ -64,8 +64,12 @@ namespace CardGamesTest
             Assert.Equal<Card>(new Card(Rank.King, Suit.Heart), pack[51]);
         }
 
+        [Fact]
+        public void NewPile()
+        {
+            Pile pile = new Pile(Orientation.FaceUp);
 
-
-
+            Assert.True(pile.Empty);
+        }
     }
 }
