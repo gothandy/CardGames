@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PlayingCardLibrary\CardGamesLibrary.csproj" />
+    <ProjectReference Include="..\CardGamesLibrary\CardGamesLibrary.csproj" />
   </ItemGroup>
 
 </Project>
