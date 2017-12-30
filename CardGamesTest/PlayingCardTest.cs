@@ -93,5 +93,13 @@ namespace CardGamesTest
 
             Assert.True(player.Hand.Empty);
         }
+
+        [Fact]
+        public void NewPlayers()
+        {
+            Players players = new Players(2);
+
+            Assert.Equal(2, players.Count);
+        }
     }
 }
