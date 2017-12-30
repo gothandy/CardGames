@@ -5,7 +5,7 @@ namespace PlayingCardLibrary
 {
     public class Pile
     {
-        List<Card> cards = new List<Card>();
+        protected List<Card> cards = new List<Card>();
 
         public Orientation Orientation;
 

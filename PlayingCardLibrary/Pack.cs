@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 namespace PlayingCardLibrary
 {
-    public class Pack
+    public class Pack : Pile
     {
-        List<Card> cards = new List<Card>();
 
-        public Pack()
+        public Pack() : base(Orientation.FaceDown)
         {
 
             foreach (Suit suit in Enum.GetValues(typeof(Suit)))
@@ -19,12 +18,6 @@ namespace PlayingCardLibrary
                 }
             }
         }
-
-        public int Count => cards.Count;
-
-        public Orientation Orientation => Orientation.FaceDown;
-
-        public Card this[int index] => cards[index];
 
         public void PlaceTopCard(Pile pile)
         {
