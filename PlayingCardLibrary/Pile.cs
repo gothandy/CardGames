@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PlayingCardLibrary
 {
@@ -18,5 +19,10 @@ namespace PlayingCardLibrary
         public int Count => cards.Count;
 
         public Card this[int index] => cards[index];
+
+        internal void Add(Card card)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
