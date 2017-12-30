@@ -13,11 +13,11 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            SnapPlayers snapPlayers = new SnapPlayers(2);
+            Snap snap = new Snap(2);
 
-            snapPlayers.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
+            snap.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
-            Assert.Equal(26, snapPlayers[player].FaceDownPile.Count);
+            Assert.Equal(26, snap.Players[player].FaceDownPile.Count);
 
         }
 
@@ -30,11 +30,11 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            SnapPlayers snapPlayers = new SnapPlayers(2);
+            Snap snap = new Snap(playerCount: 2);
 
-            snapPlayers.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
+            snap.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
-            Assert.Equal<Card>(new Card(rank, suit), snapPlayers[player].FaceDownPile[index]);
+            Assert.Equal<Card>(new Card(rank, suit), snap.Players[player].FaceDownPile[index]);
 
         }
 
@@ -43,13 +43,13 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            SnapPlayers snapPlayers = new SnapPlayers(2);
+            Snap snap = new Snap(2);
 
-            snapPlayers.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
+            snap.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
-            snapPlayers[0].FlipCard();
+            snap.Players[0].FlipCard();
 
-            Assert.Equal<Card>(new Card(Rank.Two, Suit.Spade), snapPlayers[0].FaceUpPile[0]);
+            Assert.Equal<Card>(new Card(Rank.Two, Suit.Spade), snap.Players[0].FaceUpPile[0]);
         }
 
         [Fact]
@@ -57,14 +57,14 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            SnapPlayers snapPlayers = new SnapPlayers(2);
+            Snap snap = new Snap(2);
 
-            snapPlayers.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
+            snap.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
-            snapPlayers[0].FlipCard();
-            snapPlayers[1].FlipCard();
+            snap.Players[0].FlipCard();
+            snap.Players[1].FlipCard();
 
-            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), snapPlayers[1].FaceUpPile[0]);
+            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), snap.Players[1].FaceUpPile[0]);
         }
     }
 }

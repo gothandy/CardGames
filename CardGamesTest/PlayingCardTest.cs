@@ -40,20 +40,20 @@ namespace CardGamesTest
         [Fact]
         public void NewPlayers()
         {
-            Players<Player> players = new Players<Player>(2);
+            Game<Player> game = new Game<Player>(2);
 
-            Assert.Equal(2, players.Count);
+            Assert.Equal(2, game.Players.Count);
         }
 
         [Fact]
         public void DealCardsToPlayersCount()
         {
-            Players<Player> players = new Players<Player>(2);
+            Game<Player> game = new Game<Player>(2);
             Pack pack = new Pack();
 
-            players.Deal(pack, p => p.Hand, numberOfCards: 3);
+            game.Deal(pack, p => p.Hand, numberOfCards: 3);
 
-            Assert.Equal(3, players[0].Hand.Count);
+            Assert.Equal(3, game.Players[0].Hand.Count);
         }
 
         [Theory]
@@ -61,12 +61,12 @@ namespace CardGamesTest
         [InlineData(Rank.Eight, Suit.Heart, 1, 2)]
         public void DealCardsToPlayersCardCheck(Rank rank, Suit suit, int player, int hand)
         {
-            Players<Player> players = new Players<Player>(2);
+            Game<Player> game = new Game<Player>(2);
             Pack pack = new Pack();
 
-            players.Deal(pack, p => p.Hand, numberOfCards: 3);
+            game.Deal(pack, p => p.Hand, numberOfCards: 3);
 
-            Assert.Equal(new Card(rank, suit), players[player].Hand[hand]);
+            Assert.Equal(new Card(rank, suit), game.Players[player].Hand[hand]);
         }
 
 

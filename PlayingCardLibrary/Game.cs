@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace PlayingCardLibrary
 {
 
-    public class Players<T> : IEnumerable<T> where T : new()
+    public class Game<T> where T : new()
     {
         private List<T> players = new List<T>();
 
-        public Players(int playerCount)
+        public Game(int playerCount)
         {
             for (int i =0; i< playerCount; i++)
             {
@@ -27,20 +28,8 @@ namespace PlayingCardLibrary
                 }
             }
         }
-        
-        public int Count => players.Count;
 
-        public T this[int index] => players[index];
+        public ReadOnlyCollection<T> Players => players.AsReadOnly();
 
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            return ((IEnumerable<T>)players).GetEnumerator();
-        }
-        
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable<Player>)players).GetEnumerator();
-        }
     }
 }
