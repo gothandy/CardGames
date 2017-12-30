@@ -1,6 +1,6 @@
 ﻿namespace PlayingCardLibrary
 {
-    public class Player
+    public class TestPlayer
     {
         public Pile Hand = new Pile(Orientation.FaceDown);
     }
