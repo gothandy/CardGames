@@ -4,7 +4,7 @@ using Xunit;
 
 namespace CardGamesTest
 {
-    public class SnapTest
+    public class SnapTests
     {
         [Theory]
         [InlineData(0)]

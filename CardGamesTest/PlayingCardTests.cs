@@ -4,7 +4,7 @@ using Xunit;
 
 namespace CardGamesTest
 {
-    public class PlayingCardTest
+    public class PlayingCardTests
     {
 
         [Fact]
