@@ -24,6 +24,14 @@ namespace CardGamesTest
         }
 
         [Fact]
+        public void CardHash()
+        {
+            Card card = new Card(Rank.Ace, Suit.Spade);
+
+            Assert.Equal<int>(1, card.GetHashCode());
+        }
+
+        [Fact]
         public void NewPack()
         {
             Pack pack = new Pack();

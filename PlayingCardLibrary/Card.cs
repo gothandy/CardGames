@@ -27,5 +27,12 @@ namespace PlayingCardLibrary
 
             return (cardToCompare.Rank == this.Rank) && (cardToCompare.Suit == this.Suit);
         }
+
+        public override int GetHashCode()
+        {
+            int countOfSuits = Enum.GetValues(typeof(Suit)).Length;
+
+            return (int)this.Rank + ((int)this.Suit * countOfSuits);
+        }
     }
 }
