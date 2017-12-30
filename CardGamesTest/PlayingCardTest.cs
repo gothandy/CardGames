@@ -101,5 +101,17 @@ namespace CardGamesTest
 
             Assert.Equal(2, players.Count);
         }
+
+        [Fact]
+        public void DealCardsToPlayers()
+        {
+            Players players = new Players(2);
+            Pack pack = new Pack();
+
+            pack.Deal(players, numberOfCards: 3);
+
+            Assert.Equal(3, players[0].Hand.Count);
+
+        }
     }
 }

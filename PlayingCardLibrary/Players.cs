@@ -5,11 +5,18 @@ namespace PlayingCardLibrary
 {
     public class Players
     {
+        private List<Player> players = new List<Player>();
+
         public Players(int playerCount)
         {
-            throw (new NotImplementedException());
+            for (int i =0; i< playerCount; i++)
+            {
+                players.Add(new Player());
+            }
         }
 
-        public int Count => throw (new NotImplementedException());
+        public int Count => players.Count;
+
+        public Player this[int index] => players[index];
     }
 }

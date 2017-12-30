@@ -35,5 +35,10 @@ namespace PlayingCardLibrary
 
             cards.RemoveAt(index);
         }
+
+        public void Deal(Players players, int numberOfCards)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
