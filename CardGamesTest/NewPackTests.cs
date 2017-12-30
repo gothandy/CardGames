@@ -24,36 +24,16 @@ namespace CardGamesTest
         }
 
 
-        [Fact]
-        public void BottomCard()
+        [Theory]
+        [InlineData(Rank.Ace, Suit.Spade, 0)]
+        [InlineData(Rank.Two, Suit.Spade, 1)]
+        [InlineData(Rank.Queen, Suit.Heart, 50)]
+        [InlineData(Rank.King, Suit.Heart, 51)]
+        public void BottomCard(Rank rank, Suit suit, int index)
         {
             Pack pack = new Pack();
 
-            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), pack[0]);
-        }
-
-        [Fact]
-        public void TopCard()
-        {
-            Pack pack = new Pack();
-
-            Assert.Equal<Card>(new Card(Rank.King, Suit.Heart), pack[51]);
-        }
-
-        [Fact]
-        public void SecondBottomCard()
-        {
-            Pack pack = new Pack();
-
-            Assert.Equal<Card>(new Card(Rank.Two, Suit.Spade), pack[1]);
-        }
-
-        [Fact]
-        public void SecondTopCard()
-        {
-            Pack pack = new Pack();
-
-            Assert.Equal<Card>(new Card(Rank.Queen, Suit.Heart), pack[50]);
+            Assert.Equal<Card>(new Card(rank, suit), pack[index]);
         }
     }
 }

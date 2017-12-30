@@ -56,16 +56,19 @@ namespace CardGamesTest
             Assert.Equal(3, players[0].Hand.Count);
         }
 
-        [Fact]
-        public void DealCardsToPlayersCardCheck()
+        [Theory]
+        [InlineData(Rank.King, Suit.Heart, 0,0)]
+        [InlineData(Rank.Eight, Suit.Heart, 1, 2)]
+        public void DealCardsToPlayersCardCheck(Rank rank, Suit suit, int player, int hand)
         {
             Players players = new Players(2);
             Pack pack = new Pack();
 
             pack.Deal(players, numberOfCards: 3);
 
-            Assert.Equal(new Card(Rank.King, Suit.Heart), players[0].Hand[0]);
-            Assert.Equal(new Card(Rank.Eight, Suit.Heart), players[1].Hand[2]);
+            Assert.Equal(new Card(rank, suit), players[player].Hand[hand]);
         }
+
+
     }
 }
