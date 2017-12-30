@@ -1,14 +1,22 @@
-﻿namespace PlayingCardLibrary
+﻿using System.Collections.Generic;
+
+namespace PlayingCardLibrary
 {
     public class Pile
     {
-        private Orientation faceUp;
+        List<Card> cards = new List<Card>();
+
+        public Orientation Orientation;
 
         public Pile(Orientation faceUp)
         {
-            this.faceUp = faceUp;
+            this.Orientation = faceUp;
         }
 
-        public bool Empty => true;
+        public bool Empty => cards.Count == 0;
+
+        public int Count => cards.Count;
+
+        public Card this[int index] => cards[index];
     }
 }

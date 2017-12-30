@@ -24,5 +24,10 @@ namespace PlayingCardLibrary
         public Orientation Orientation => Orientation.FaceDown;
 
         public Card this[int index] => cards[index];
+
+        public void PlaceTopCard(Pile pile)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

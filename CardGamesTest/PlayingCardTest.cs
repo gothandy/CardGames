@@ -71,5 +71,19 @@ namespace CardGamesTest
 
             Assert.True(pile.Empty);
         }
+
+        [Fact]
+        public void PlacePackTopCardOnPile()
+        {
+            Pack pack = new Pack();
+            Pile pile = new Pile(Orientation.FaceUp);
+
+            pack.PlaceTopCard(pile);
+
+            Assert.Equal(51, pack.Count);
+            Assert.Equal(1, pile.Count);
+            Assert.Equal(new Card(Rank.King, Suit.Heart), pile[0]);
+
+        }
     }
 }
