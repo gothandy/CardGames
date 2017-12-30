@@ -10,9 +10,10 @@ namespace PlayingCardLibrary
 
         public Pack()
         {
-            foreach(Rank rank in Enum.GetValues(typeof(Rank)))
+
+            foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             {
-                foreach (Suit suit in Enum.GetValues(typeof(Suit)))
+                foreach (Rank rank in Enum.GetValues(typeof(Rank)))
                 {
                     cards.Add(new Card(rank, suit));
                 }
