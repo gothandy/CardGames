@@ -40,7 +40,7 @@ namespace CardGamesTest
         }
 
         [Fact]
-        public void NewPackFirstCard()
+        public void NewPackBottomCard()
         {
             Pack pack = new Pack();
 
@@ -48,11 +48,13 @@ namespace CardGamesTest
         }
 
         [Fact]
-        public void NewPackLastCard()
+        public void NewPackTopCard()
         {
             Pack pack = new Pack();
 
             Assert.Equal<Card>(new Card(Rank.King, Suit.Heart), pack[51]);
         }
+
+
     }
 }
