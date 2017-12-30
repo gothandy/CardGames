@@ -21,6 +21,8 @@ namespace PlayingCardLibrary
 
         public int Count => cards.Count;
 
+        public Orientation Orientation => Orientation.FaceDown;
+
         public Card this[int index] => cards[index];
     }
 }

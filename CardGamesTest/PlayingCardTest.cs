@@ -40,6 +40,15 @@ namespace CardGamesTest
         }
 
         [Fact]
+        public void NewPackOrientationFaceDown()
+        {
+            Pack pack = new Pack();
+
+            Assert.Equal(Orientation.FaceDown, pack.Orientation);
+        }
+
+
+        [Fact]
         public void NewPackBottomCard()
         {
             Pack pack = new Pack();
@@ -54,6 +63,8 @@ namespace CardGamesTest
 
             Assert.Equal<Card>(new Card(Rank.King, Suit.Heart), pack[51]);
         }
+
+
 
 
     }
