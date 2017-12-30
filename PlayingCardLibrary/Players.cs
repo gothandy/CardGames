@@ -4,15 +4,8 @@ using System.Collections.Generic;
 
 namespace PlayingCardLibrary
 {
-    // Default to Player Type.
-    public class Players : Players<Player>
-    {
-        public Players(int playerCount) : base(playerCount)
-        {
-        }
-    }
 
-    public class Players<T> : IEnumerable<T> where T : Player, new()
+    public class Players<T> : IEnumerable<T> where T : new()
     {
         private List<T> players = new List<T>();
 
@@ -24,24 +17,13 @@ namespace PlayingCardLibrary
             }
         }
 
-        public void Deal(Pack pack, Func<T, Pile> lambda, int numberOfCards)
+        public void Deal(Pile pile, Func<T, Pile> lambda, int numberOfCards)
         {
             for (int i = 0; i < numberOfCards; i++)
             {
                 foreach (T player in players)
                 {
-                    pack.PlaceTopCard(lambda.Invoke(player));
-                }
-            }
-        }
-
-        public void Deal(Pack pack, int numberOfCards)
-        {
-            for (int i = 0; i < numberOfCards; i++)
-            {
-                foreach (Player player in players)
-                {
-                    pack.PlaceTopCard(player.Hand);
+                    pile.PlaceTopCard(lambda.Invoke(player));
                 }
             }
         }

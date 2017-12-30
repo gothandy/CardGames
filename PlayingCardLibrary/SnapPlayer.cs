@@ -2,11 +2,11 @@
 
 namespace PlayingCardLibrary
 {
-    public class SnapPlayer : Player
+    public class SnapPlayer
     {
         public void FlipCard()
         {
-            this.Hand.PlaceTopCard(FaceUpPile);
+            this.FaceDownPile.PlaceTopCard(FaceUpPile);
         }
 
         public Pile FaceDownPile = new Pile(Orientation.FaceDown);

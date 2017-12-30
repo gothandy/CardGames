@@ -45,7 +45,7 @@ namespace CardGamesTest
 
             SnapPlayers snapPlayers = new SnapPlayers(2);
 
-            snapPlayers.Deal(pack, numberOfCards: 26);
+            snapPlayers.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
             snapPlayers[0].FlipCard();
 
@@ -59,7 +59,7 @@ namespace CardGamesTest
 
             SnapPlayers snapPlayers = new SnapPlayers(2);
 
-            snapPlayers.Deal(pack, numberOfCards: 26);
+            snapPlayers.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
             snapPlayers[0].FlipCard();
             snapPlayers[1].FlipCard();
