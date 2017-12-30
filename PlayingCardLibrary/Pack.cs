@@ -30,7 +30,7 @@ namespace PlayingCardLibrary
             cards.RemoveAt(index);
         }
 
-        public void Deal(Players players, int numberOfCards)
+        public void Deal(Players<Player> players, int numberOfCards)
         {
             for(int i = 0; i < numberOfCards; i++)
             {
