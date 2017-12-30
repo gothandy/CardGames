@@ -51,5 +51,20 @@ namespace CardGamesTest
 
             Assert.Equal<Card>(new Card(Rank.Two, Suit.Spade), snapPlayers[0].FaceUpPile[0]);
         }
+
+        [Fact]
+        public void FlipCardBothPlayers()
+        {
+            Pack pack = new Pack();
+
+            SnapPlayers snapPlayers = new SnapPlayers(2);
+
+            snapPlayers.Deal(pack, numberOfCards: 26);
+
+            snapPlayers[0].FlipCard();
+            snapPlayers[1].FlipCard();
+
+            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), snapPlayers[1].FaceUpPile[0]);
+        }
     }
 }
