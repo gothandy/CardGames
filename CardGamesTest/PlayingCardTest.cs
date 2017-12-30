@@ -13,5 +13,14 @@ namespace CardGamesTest
 
             Assert.Equal("Ace of Spades", card.ToString());
         }
+
+        [Fact]
+        public void NewPack()
+        {
+            Pack pack = new Pack();
+
+            Assert.Equal(52, pack.Count);
+            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), pack[0]);
+        }
     }
 }
