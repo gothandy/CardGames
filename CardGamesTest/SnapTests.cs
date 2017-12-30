@@ -13,7 +13,7 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            Snap snap = new Snap(2);
+            SnapGame snap = new SnapGame(2);
 
             snap.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
@@ -30,7 +30,7 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            Snap snap = new Snap(playerCount: 2);
+            SnapGame snap = new SnapGame(playerCount: 2);
 
             snap.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
@@ -43,7 +43,7 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            Snap snap = new Snap(2);
+            SnapGame snap = new SnapGame(2);
 
             snap.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
@@ -57,7 +57,7 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            Snap snap = new Snap(2);
+            SnapGame snap = new SnapGame(2);
 
             snap.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
