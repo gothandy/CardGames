@@ -32,12 +32,27 @@ namespace CardGamesTest
         }
 
         [Fact]
-        public void NewPack()
+        public void NewPackCount()
         {
             Pack pack = new Pack();
 
             Assert.Equal(52, pack.Count);
+        }
+
+        [Fact]
+        public void NewPackFirstCard()
+        {
+            Pack pack = new Pack();
+
             Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), pack[0]);
+        }
+
+        [Fact]
+        public void NewPackLastCard()
+        {
+            Pack pack = new Pack();
+
+            Assert.Equal<Card>(new Card(Rank.King, Suit.Heart), pack[51]);
         }
     }
 }
