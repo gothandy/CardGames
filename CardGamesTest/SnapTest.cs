@@ -9,7 +9,7 @@ namespace CardGamesTest
         [Theory]
         [InlineData(0)]
         [InlineData(1)]
-        public void NewGame(int player)
+        public void NewGameCount(int player)
         {
             Pack pack = new Pack();
 
@@ -18,6 +18,23 @@ namespace CardGamesTest
             snapPlayers.Deal(pack, numberOfCards: 26);
 
             Assert.Equal(26, snapPlayers[player].Hand.Count);
+
+        }
+
+        [Theory]
+        [InlineData(Rank.King, Suit.Heart, 0, 0)]
+        [InlineData(Rank.Queen, Suit.Heart, 1, 0)]
+        [InlineData(Rank.Two, Suit.Spade, 0, 25)]
+        [InlineData(Rank.Ace, Suit.Spade, 1, 25)]
+        public void NewGameAssertCardEqual(Rank rank, Suit suit, int player, int index)
+        {
+            Pack pack = new Pack();
+
+            SnapPlayers snapPlayers = new SnapPlayers(2);
+
+            snapPlayers.Deal(pack, numberOfCards: 26);
+
+            Assert.Equal<Card>(new Card(rank, suit), snapPlayers[player].Hand[index]);
 
         }
 
@@ -32,7 +49,7 @@ namespace CardGamesTest
 
             snapPlayers[0].FlipCard();
 
-            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), snapPlayers[0].FaceUpPile[0]);
+            Assert.Equal<Card>(new Card(Rank.Two, Suit.Spade), snapPlayers[0].FaceUpPile[0]);
         }
     }
 }

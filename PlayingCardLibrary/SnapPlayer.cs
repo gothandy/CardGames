@@ -6,7 +6,7 @@ namespace PlayingCardLibrary
     {
         public void FlipCard()
         {
-            throw new NotImplementedException();
+            this.Hand.PlaceTopCard(FaceUpPile);
         }
 
         public Pile FaceUpPile = new Pile(Orientation.FaceUp);

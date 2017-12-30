@@ -24,5 +24,16 @@ namespace PlayingCardLibrary
         {
             cards.Add(card);
         }
+
+        public void PlaceTopCard(Pile pile)
+        {
+            int index = cards.Count - 1;
+
+            Card card = cards[index];
+
+            pile.Add(card);
+
+            cards.RemoveAt(index);
+        }
     }
 }
