@@ -9,9 +9,9 @@ namespace PlayingCardLibrary
 
         public Orientation Orientation;
 
-        public Pile(Orientation faceUp)
+        public Pile(Orientation orientation)
         {
-            this.Orientation = faceUp;
+            this.Orientation = orientation;
         }
 
         public bool Empty => cards.Count == 0;
