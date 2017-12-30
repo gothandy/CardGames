@@ -15,9 +15,9 @@ namespace CardGamesTest
 
             SnapPlayers snapPlayers = new SnapPlayers(2);
 
-            snapPlayers.Deal(pack, numberOfCards: 26);
+            snapPlayers.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
-            Assert.Equal(26, snapPlayers[player].Hand.Count);
+            Assert.Equal(26, snapPlayers[player].FaceDownPile.Count);
 
         }
 
@@ -32,9 +32,9 @@ namespace CardGamesTest
 
             SnapPlayers snapPlayers = new SnapPlayers(2);
 
-            snapPlayers.Deal(pack, numberOfCards: 26);
+            snapPlayers.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
 
-            Assert.Equal<Card>(new Card(rank, suit), snapPlayers[player].Hand[index]);
+            Assert.Equal<Card>(new Card(rank, suit), snapPlayers[player].FaceDownPile[index]);
 
         }
 

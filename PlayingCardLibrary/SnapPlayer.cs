@@ -9,6 +9,7 @@ namespace PlayingCardLibrary
             this.Hand.PlaceTopCard(FaceUpPile);
         }
 
+        public Pile FaceDownPile = new Pile(Orientation.FaceDown);
         public Pile FaceUpPile = new Pile(Orientation.FaceUp);
     }
 }

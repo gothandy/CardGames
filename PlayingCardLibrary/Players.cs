@@ -24,6 +24,17 @@ namespace PlayingCardLibrary
             }
         }
 
+        public void Deal(Pack pack, Func<T, Pile> lambda, int numberOfCards)
+        {
+            for (int i = 0; i < numberOfCards; i++)
+            {
+                foreach (T player in players)
+                {
+                    pack.PlaceTopCard(lambda.Invoke(player));
+                }
+            }
+        }
+
         public void Deal(Pack pack, int numberOfCards)
         {
             for (int i = 0; i < numberOfCards; i++)
