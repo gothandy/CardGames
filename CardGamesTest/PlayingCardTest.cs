@@ -85,5 +85,13 @@ namespace CardGamesTest
             Assert.Equal(new Card(Rank.King, Suit.Heart), pile[0]);
 
         }
+
+        [Fact]
+        public void NewPlayer()
+        {
+            Player player = new Player();
+
+            Assert.True(player.Hand.Empty);
+        }
     }
 }
