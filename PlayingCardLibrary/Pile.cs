@@ -22,7 +22,7 @@ namespace PlayingCardLibrary
 
         internal void Add(Card card)
         {
-            throw new NotImplementedException();
+            cards.Add(card);
         }
     }
 }
