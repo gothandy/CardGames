@@ -4,18 +4,28 @@ namespace PlayingCardLibrary
 {
     public class Card
     {
-        private Rank rank;
-        private Suit suit;
+        public Rank Rank;
+        public Suit Suit;
 
         public Card(Rank rank, Suit suit)
         {
-            this.rank = rank;
-            this.suit = suit;
+            this.Rank = rank;
+            this.Suit = suit;
         }
 
         public override string ToString()
         {
-            return String.Format("{0} of {1}s", this.rank, this.suit);
+            return String.Format("{0} of {1}s", this.Rank, this.Suit);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (Object.ReferenceEquals(null, obj)) return false;
+            if (obj.GetType() != typeof(Card)) return false;
+
+            Card cardToCompare = (Card)obj;
+
+            return (cardToCompare.Rank == this.Rank) && (cardToCompare.Suit == this.Suit);
         }
     }
 }
