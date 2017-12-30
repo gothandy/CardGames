@@ -6,8 +6,12 @@ namespace PlayingCardLibrary
 {
     public class Pack
     {
-        public int Count => 52;
+        List<Card> cards = new List<Card>();
 
-        public Card this[int index] => new Card(Rank.Ace, Suit.Spade);
+
+
+        public int Count => cards.Count;
+
+        public Card this[int index] => cards[index];
     }
 }
