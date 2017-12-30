@@ -65,6 +65,22 @@ namespace CardGamesTest
         }
 
         [Fact]
+        public void NewPackSecondBottomCard()
+        {
+            Pack pack = new Pack();
+
+            Assert.Equal<Card>(new Card(Rank.Two, Suit.Spade), pack[1]);
+        }
+
+        [Fact]
+        public void NewPackSecondTopCard()
+        {
+            Pack pack = new Pack();
+
+            Assert.Equal<Card>(new Card(Rank.Queen, Suit.Heart), pack[50]);
+        }
+        
+        [Fact]
         public void NewPile()
         {
             Pile pile = new Pile(Orientation.FaceUp);
@@ -121,6 +137,7 @@ namespace CardGamesTest
 
             pack.Deal(players, numberOfCards: 3);
 
+            Assert.Equal(new Card(Rank.King, Suit.Heart), players[0].Hand[0]);
             Assert.Equal(new Card(Rank.Eight, Suit.Heart), players[1].Hand[2]);
         }
     }
