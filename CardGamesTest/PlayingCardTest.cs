@@ -9,7 +9,7 @@ namespace CardGamesTest
         [Fact]
         public void NewCard()
         {
-            Card card = new Card();
+            Card card = new Card(Rank.Ace, Suit.Spade);
 
             Assert.Equal("Ace of Spades", card.ToString());
         }
