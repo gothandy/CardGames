@@ -6,14 +6,8 @@ namespace PlayingCardLibrary
 {
     public class Pack
     {
-        public int Count { get; set; }
+        public int Count => 52;
 
-        public Card this[int index]
-        {
-            get
-            {
-                throw (new NotImplementedException());
-            }
-        }
+        public Card this[int index] => new Card(Rank.Ace, Suit.Spade);
     }
 }

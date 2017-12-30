@@ -15,6 +15,15 @@ namespace CardGamesTest
         }
 
         [Fact]
+        public void CardEquals()
+        {
+            Card card1 = new Card(Rank.Ace, Suit.Spade);
+            Card card2 = new Card(Rank.Ace, Suit.Spade);
+
+            Assert.Equal<Card>(card1, card2);
+        }
+
+        [Fact]
         public void NewPack()
         {
             Pack pack = new Pack();
