@@ -2,6 +2,6 @@
 {
     public enum Rank
     {
-        Ace
+        Ace = 1
     }
 }
