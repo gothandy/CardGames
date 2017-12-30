@@ -42,7 +42,7 @@ namespace PlayingCardLibrary
             {
                 foreach(Player player in players)
                 {
-                    throw (new NotImplementedException());
+                    PlaceTopCard(player.Hand);
                 }
             }
         }

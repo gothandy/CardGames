@@ -103,7 +103,7 @@ namespace CardGamesTest
         }
 
         [Fact]
-        public void DealCardsToPlayers()
+        public void DealCardsToPlayersCount()
         {
             Players players = new Players(2);
             Pack pack = new Pack();
@@ -111,7 +111,17 @@ namespace CardGamesTest
             pack.Deal(players, numberOfCards: 3);
 
             Assert.Equal(3, players[0].Hand.Count);
+        }
 
+        [Fact]
+        public void DealCardsToPlayersCardCheck()
+        {
+            Players players = new Players(2);
+            Pack pack = new Pack();
+
+            pack.Deal(players, numberOfCards: 3);
+
+            Assert.Equal(new Card(Rank.Eight, Suit.Heart), players[1].Hand[2]);
         }
     }
 }
