@@ -30,15 +30,5 @@ namespace PlayingCardLibrary
             cards.RemoveAt(index);
         }
 
-        public void Deal(Players<Player> players, int numberOfCards)
-        {
-            for(int i = 0; i < numberOfCards; i++)
-            {
-                foreach(Player player in players)
-                {
-                    PlaceTopCard(player.Hand);
-                }
-            }
-        }
     }
 }

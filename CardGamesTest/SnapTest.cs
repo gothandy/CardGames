@@ -13,7 +13,7 @@ namespace CardGamesTest
 
             SnapPlayers snapPlayers = new SnapPlayers(2);
 
-            snapPlayers.Deal(pack, cardCount: 26);
+            snapPlayers.Deal(pack, numberOfCards: 26);
 
         }
     }

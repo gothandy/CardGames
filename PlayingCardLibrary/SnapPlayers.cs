@@ -7,10 +7,5 @@ namespace PlayingCardLibrary
         public SnapPlayers(int playerCount) : base(playerCount)
         {
         }
-
-        public void Deal(Pack pack, int cardCount)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

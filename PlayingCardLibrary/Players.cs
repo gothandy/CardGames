@@ -24,6 +24,17 @@ namespace PlayingCardLibrary
             }
         }
 
+        public void Deal(Pack pack, int numberOfCards)
+        {
+            for (int i = 0; i < numberOfCards; i++)
+            {
+                foreach (Player player in players)
+                {
+                    pack.PlaceTopCard(player.Hand);
+                }
+            }
+        }
+        
         public int Count => players.Count;
 
         public T this[int index] => players[index];

@@ -51,7 +51,7 @@ namespace CardGamesTest
             Players players = new Players(2);
             Pack pack = new Pack();
 
-            pack.Deal(players, numberOfCards: 3);
+            players.Deal(pack, numberOfCards: 3);
 
             Assert.Equal(3, players[0].Hand.Count);
         }
@@ -64,7 +64,7 @@ namespace CardGamesTest
             Players players = new Players(2);
             Pack pack = new Pack();
 
-            pack.Deal(players, numberOfCards: 3);
+            players.Deal(pack, numberOfCards: 3);
 
             Assert.Equal(new Card(rank, suit), players[player].Hand[hand]);
         }
