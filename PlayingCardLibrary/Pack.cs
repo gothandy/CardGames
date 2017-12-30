@@ -38,7 +38,13 @@ namespace PlayingCardLibrary
 
         public void Deal(Players players, int numberOfCards)
         {
-            throw new NotImplementedException();
+            for(int i = 0; i < numberOfCards; i++)
+            {
+                foreach(Player player in players)
+                {
+                    throw (new NotImplementedException());
+                }
+            }
         }
     }
 }
