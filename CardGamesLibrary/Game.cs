@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardGamesLibrary;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,22 +32,13 @@ namespace PlayingCardLibrary
 
         public void DealAll(Pile pile, Func<T, Pile> pileToDealTo)
         {
-            IEnumerator<T> playerEnumerator = players.GetEnumerator();
+            TurnTaker<T> turnTaker = new TurnTaker<T>(players);
 
             while (!pile.Empty)
             {
-                NextPlayer(playerEnumerator);
+                pile.PlaceTopCard(pileToDealTo.Invoke(turnTaker.CurrentPlayer));
 
-                pile.PlaceTopCard(pileToDealTo.Invoke(playerEnumerator.Current));
-            }
-        }
-
-        private static void NextPlayer(IEnumerator<T> playerEnumerator)
-        {
-            if (!playerEnumerator.MoveNext())
-            {
-                playerEnumerator.Reset();
-                playerEnumerator.MoveNext();
+                turnTaker.NextPlayer();
             }
         }
 

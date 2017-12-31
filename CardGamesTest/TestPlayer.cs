@@ -1,4 +1,6 @@
-﻿namespace PlayingCardLibrary
+﻿using PlayingCardLibrary;
+
+namespace CardGamesTest
 {
     public class TestPlayer
     {
