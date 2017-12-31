@@ -13,9 +13,9 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            SnapGame snap = new SnapGame(pack, 2);
+            SnapGame game = new SnapGame(pack, 2);
 
-            Assert.Equal(26, snap.Players[player].FaceDownPile.Count);
+            Assert.Equal(26, game.Players[player].FaceDownPile.Count);
         }
 
         [Theory]
@@ -27,9 +27,9 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            SnapGame snap = new SnapGame(pack, playerCount: 2);
+            SnapGame game = new SnapGame(pack, playerCount: 2);
 
-            Assert.Equal<Card>(new Card(rank, suit), snap.Players[player].FaceDownPile[index]);
+            Assert.Equal<Card>(new Card(rank, suit), game.Players[player].FaceDownPile[index]);
 
         }
 
@@ -38,11 +38,11 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            SnapGame snap = new SnapGame(pack, 2);
+            SnapGame game = new SnapGame(pack, 2);
 
-            snap.Players[0].FlipCard();
+            game.Players[0].FlipCard();
 
-            Assert.Equal<Card>(new Card(Rank.Two, Suit.Spade), snap.Players[0].FaceUpPile[0]);
+            Assert.Equal<Card>(new Card(Rank.Two, Suit.Spade), game.Players[0].FaceUpPile[0]);
         }
 
         [Fact]
@@ -50,12 +50,25 @@ namespace CardGamesTest
         {
             Pack pack = new Pack();
 
-            SnapGame snap = new SnapGame(pack, 2);
+            SnapGame game = new SnapGame(pack, 2);
 
-            snap.Players[0].FlipCard();
-            snap.Players[1].FlipCard();
+            game.Players[0].FlipCard();
+            game.Players[1].FlipCard();
 
-            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), snap.Players[1].FaceUpPile[0]);
+            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade), game.Players[1].FaceUpPile[0]);
+        }
+
+        [Theory]
+        [InlineData(3, 0, 18)]
+        [InlineData(3, 2, 17)]
+        [InlineData(4, 0, 13)]
+        public void MultiplePlayers(int playerCount, int playerToAssert, int expectedCardCount)
+        {
+            Pack pack = new Pack();
+
+            SnapGame game = new SnapGame(pack, playerCount);
+
+            Assert.Equal(expectedCardCount, game.Players[playerToAssert].FaceDownPile.Count);
         }
     }
 }
