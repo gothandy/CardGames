@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PlayingCardLibrary
 {
@@ -11,7 +13,14 @@ namespace PlayingCardLibrary
 
         public bool CheckForSnap()
         {
-            throw new NotImplementedException();
+            IEnumerable<Card> topCards = Players.Select(p => p.FaceUpPile.TopCard);
+            
+            List<Rank> matchingRank = topCards.GroupBy(c => c.Rank)
+              .Where(g => g.Count() > 1)
+              .Select(y => y.Key)
+              .ToList();
+
+            return matchingRank.Count == 1;
         }
     }
 }

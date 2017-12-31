@@ -18,6 +18,8 @@ namespace PlayingCardLibrary
 
         public int Count => cards.Count;
 
+        public Card TopCard => cards[cards.Count - 1];
+
         public Card this[int index] => cards[index];
 
         internal void Add(Card card)
@@ -27,13 +29,9 @@ namespace PlayingCardLibrary
 
         public void PlaceTopCard(Pile pile)
         {
-            int index = cards.Count - 1;
+            pile.Add(this.TopCard);
 
-            Card card = cards[index];
-
-            pile.Add(card);
-
-            cards.RemoveAt(index);
+            cards.RemoveAt(cards.Count - 1);
         }
     }
 }
