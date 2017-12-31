@@ -11,7 +11,9 @@ namespace CardGamesTest
         [InlineData(1)]
         public void NewGameCount(int player)
         {
-            SnapGame snap = new SnapGame(2);
+            Pack pack = new Pack();
+
+            SnapGame snap = new SnapGame(pack, 2);
 
             Assert.Equal(26, snap.Players[player].FaceDownPile.Count);
         }
@@ -23,7 +25,9 @@ namespace CardGamesTest
         [InlineData(Rank.Ace, Suit.Spade, 1, 25)]
         public void NewGameAssertCardEqual(Rank rank, Suit suit, int player, int index)
         {
-            SnapGame snap = new SnapGame(playerCount: 2);
+            Pack pack = new Pack();
+
+            SnapGame snap = new SnapGame(pack, playerCount: 2);
 
             Assert.Equal<Card>(new Card(rank, suit), snap.Players[player].FaceDownPile[index]);
 
@@ -32,7 +36,9 @@ namespace CardGamesTest
         [Fact]
         public void FlipCard()
         {
-            SnapGame snap = new SnapGame(2);
+            Pack pack = new Pack();
+
+            SnapGame snap = new SnapGame(pack, 2);
 
             snap.Players[0].FlipCard();
 
@@ -42,7 +48,9 @@ namespace CardGamesTest
         [Fact]
         public void FlipCardBothPlayers()
         {
-            SnapGame snap = new SnapGame(2);
+            Pack pack = new Pack();
+
+            SnapGame snap = new SnapGame(pack, 2);
 
             snap.Players[0].FlipCard();
             snap.Players[1].FlipCard();
