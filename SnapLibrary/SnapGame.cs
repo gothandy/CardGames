@@ -6,7 +6,7 @@ namespace PlayingCardLibrary
     {
         public SnapGame(Pack pack, int playerCount) : base(playerCount)
         {
-            this.Deal(pack, p => p.FaceDownPile, numberOfCards: 26);
+            this.DealAll(pack, p => p.FaceDownPile);
         }
     }
 }

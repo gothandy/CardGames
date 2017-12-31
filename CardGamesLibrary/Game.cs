@@ -18,13 +18,26 @@ namespace PlayingCardLibrary
             }
         }
 
-        public void Deal(Pile pile, Func<T, Pile> lambda, int numberOfCards)
+        public void Deal(Pile pile, Func<T, Pile> pileToDealTo, int numberOfCards)
         {
             for (int i = 0; i < numberOfCards; i++)
             {
                 foreach (T player in players)
                 {
-                    pile.PlaceTopCard(lambda.Invoke(player));
+                    pile.PlaceTopCard(pileToDealTo.Invoke(player));
+                }
+            }
+        }
+
+        public void DealAll(Pile pile, Func<T, Pile> pileToDealTo)
+        {
+            
+            while (!pile.Empty)
+            {
+                foreach (T player in players)
+                {
+                    pile.PlaceTopCard(pileToDealTo.Invoke(player));
+                    if (pile.Empty) break;
                 }
             }
         }
