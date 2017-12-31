@@ -31,14 +31,13 @@ namespace PlayingCardLibrary
 
         public void DealAll(Pile pile, Func<T, Pile> pileToDealTo)
         {
-            
+            IEnumerator<T> playerEnumerator = players.GetEnumerator();
+
             while (!pile.Empty)
             {
-                foreach (T player in players)
-                {
-                    pile.PlaceTopCard(pileToDealTo.Invoke(player));
-                    if (pile.Empty) break;
-                }
+                pile.PlaceTopCard(pileToDealTo.Invoke(playerEnumerator.Current));
+
+                if (!playerEnumerator.MoveNext()) playerEnumerator.Reset();
             }
         }
 
