@@ -35,9 +35,18 @@ namespace PlayingCardLibrary
 
             while (!pile.Empty)
             {
-                pile.PlaceTopCard(pileToDealTo.Invoke(playerEnumerator.Current));
+                NextPlayer(playerEnumerator);
 
-                if (!playerEnumerator.MoveNext()) playerEnumerator.Reset();
+                pile.PlaceTopCard(pileToDealTo.Invoke(playerEnumerator.Current));
+            }
+        }
+
+        private static void NextPlayer(IEnumerator<T> playerEnumerator)
+        {
+            if (!playerEnumerator.MoveNext())
+            {
+                playerEnumerator.Reset();
+                playerEnumerator.MoveNext();
             }
         }
 
