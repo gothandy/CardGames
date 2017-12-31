@@ -4,9 +4,14 @@ namespace PlayingCardLibrary
 {
     public class SnapGame : Game<SnapPlayer>
     {
-        public SnapGame(Pack pack, int playerCount) : base(playerCount)
+        public SnapGame(Pile pile, int playerCount) : base(playerCount)
         {
-            this.DealAll(pack, p => p.FaceDownPile);
+            this.DealAll(pile, p => p.FaceDownPile);
+        }
+
+        public bool CheckForSnap()
+        {
+            throw new NotImplementedException();
         }
     }
 }

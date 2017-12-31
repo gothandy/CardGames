@@ -1,4 +1,5 @@
-﻿using PlayingCardLibrary;
+﻿using CardGamesLibrary;
+using PlayingCardLibrary;
 using System;
 using Xunit;
 
@@ -69,6 +70,24 @@ namespace CardGamesTest
             SnapGame game = new SnapGame(pack, playerCount);
 
             Assert.Equal(expectedCardCount, game.Players[playerToAssert].FaceDownPile.Count);
+        }
+
+        [Fact]
+        public void CheckForSnap()
+        {
+            TestPack pack = new TestPack();
+
+            SnapGame game = new SnapGame(pack, 2);
+
+            TurnTaker<SnapPlayer> turnTaker = new TurnTaker<SnapPlayer>(game.Players);
+
+            turnTaker.CurrentPlayer.FlipCard();
+            turnTaker.NextPlayer();
+
+            turnTaker.CurrentPlayer.FlipCard();
+            turnTaker.NextPlayer();
+
+            Assert.True(game.CheckForSnap());
         }
     }
 }
