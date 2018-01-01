@@ -28,15 +28,27 @@ namespace CardGames
         }
 
         [Fact]
-        public void AddToBottom()
-        { 
+        public void AddToBottomOtherHandEmpty()
+        {
             TestGame game = new TestGame(4, 13);
 
             game.Players[0].Hand.AddToBottom(game.Players[1].Hand);
 
-            Assert.Equal(26, game.Players[0].Hand.Count);
+            Assert.True(game.Players[1].Hand.Empty);
+        }
 
-            Assert.Equal<Card>(new Card(Rank.King, Suit.Club), game.Players[0].Hand[0]);
+        [Theory]
+        [InlineData(0, Rank.King, Suit.Club)]
+        [InlineData(12, Rank.Ace, Suit.Club)]
+        [InlineData(13, Rank.King, Suit.Heart)]
+        [InlineData(25, Rank.Ace, Suit.Heart)]
+        public void AddToBottom(int index, Rank rank, Suit suit)
+        {
+            TestGame game = new TestGame(4, 13);
+
+            game.Players[0].Hand.AddToBottom(game.Players[1].Hand);
+
+            Assert.Equal<Card>(new Card(rank, suit), game.Players[0].Hand[index]);
         }
 
         [Fact]
@@ -57,6 +69,22 @@ namespace CardGames
             TestGame game = new TestGame(4, 13);
 
             game.Players[0].Hand.Flip();
+
+            Assert.Equal<Card>(new Card(rank, suit), game.Players[0].Hand[index]);
+        }
+
+        [Theory]
+        [InlineData(0, Rank.King, Suit.Club)]
+        [InlineData(12, Rank.Ace, Suit.Club)]
+        [InlineData(13, Rank.King, Suit.Heart)]
+        [InlineData(25, Rank.Ace, Suit.Heart)]
+        public void FlipAndAddToBottom(int index, Rank rank, Suit suit)
+        {
+            TestGame game = new TestGame(4, 13);
+
+            game.Players[1].Hand.Flip();
+
+            game.Players[0].Hand.AddToBottom(game.Players[1].Hand);
 
             Assert.Equal<Card>(new Card(rank, suit), game.Players[0].Hand[index]);
         }

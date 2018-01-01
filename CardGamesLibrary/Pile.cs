@@ -39,6 +39,9 @@ namespace CardGames
 
         public void AddToBottom(Pile pile)
         {
+            // Keep the cards the facing the same way when adding
+            if (orientation != pile.Orientation) pile.Flip();
+
             cards.InsertRange(0, pile);
             pile.RemoveAll();
         }
