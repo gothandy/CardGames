@@ -7,11 +7,11 @@ namespace CardGamesTest
 {
     public class TestGame : Game<TestPlayer>
     {
-        public TestGame(int playerCount) : base(playerCount)
+        public TestGame(int playerCount, int numberOfCards) : base(playerCount)
         {
-            Pack pack = new Pack();
+            TestPack pack = new TestPack();
 
-            this.Deal(pack, p => p.Hand, numberOfCards: 3);
+            this.Deal(pack, p => p.Hand, numberOfCards);
         }
     }
 }

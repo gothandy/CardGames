@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace PlayingCardLibrary
 {
-    public class Pile
+    public class Pile : IEnumerable<Card>
     {
         protected List<Card> cards = new List<Card>();
 
@@ -36,7 +37,23 @@ namespace PlayingCardLibrary
 
         public void AddToBottom(Pile pile)
         {
-            throw new NotImplementedException();
+            cards.InsertRange(0, pile);
+            pile.RemoveAll();
+        }
+
+        protected void RemoveAll()
+        {
+            cards.RemoveAll(c => true);
+        }
+
+        public IEnumerator<Card> GetEnumerator()
+        {
+            return ((IEnumerable<Card>)cards).GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable<Card>)cards).GetEnumerator();
         }
     }
 }

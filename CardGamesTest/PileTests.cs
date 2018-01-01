@@ -30,12 +30,13 @@ namespace CardGamesTest
         [Fact]
         public void AddToBottom()
         { 
-            TestGame game = new TestGame(4);
+            TestGame game = new TestGame(4, 13);
 
             game.Players[0].Hand.AddToBottom(game.Players[1].Hand);
 
-            Assert.Equal<Card>(new Card(Rank.Ace, Suit.Spade),
-                game.Players[0].Hand[0]);
+            Assert.Equal(26, game.Players[0].Hand.Count);
+
+            Assert.Equal<Card>(new Card(Rank.King, Suit.Club), game.Players[0].Hand[0]);
         }
     }
 }

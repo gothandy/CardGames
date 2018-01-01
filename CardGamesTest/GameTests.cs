@@ -13,7 +13,7 @@ namespace CardGamesTest
         [InlineData(10, 10, 0)]
         public void GetTurnTaker(int numberOfPlayers, int numberOfTurns, int expectedPlayer)
         {
-            TestGame game = new TestGame(numberOfPlayers);
+            TestGame game = new TestGame(numberOfPlayers, 3);
 
             TurnTaker<TestPlayer> turnTaker = new TurnTaker<TestPlayer>(game.Players);
 

@@ -83,7 +83,7 @@ namespace CardGamesTest
         }
 
         [Theory]
-        [InlineData(2, 2, 0, 2)]
+        [InlineData(2, 2, 0, 27)]
         public void DoSnap(int players, int turns, int player, int expectedCount)
         {
             SnapGame game = SetUpGame(players, turns);
