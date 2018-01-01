@@ -33,5 +33,10 @@ namespace PlayingCardLibrary
 
             cards.RemoveAt(cards.Count - 1);
         }
+
+        public void AddToBottom(Pile pile)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
