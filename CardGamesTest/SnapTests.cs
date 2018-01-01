@@ -72,22 +72,44 @@ namespace CardGamesTest
             Assert.Equal(expectedCardCount, game.Players[playerToAssert].FaceDownPile.Count);
         }
 
-        [Fact]
-        public void CheckForSnap()
+        [Theory]
+        [InlineData(2, 2, true)]
+        [InlineData(2, 5, false)]
+        public void CheckForSnap(int players, int turns, bool expected)
+        {
+            SnapGame game = SetUpGame(players, turns);
+
+            Assert.Equal<bool>(expected, game.CheckForSnap());
+        }
+
+        [Theory]
+        [InlineData(2, 2, 0, 2)]
+        public void DoSnap(int players, int turns, int player, int expectedCount)
+        {
+            SnapGame game = SetUpGame(players, turns);
+
+            game.DoSnap(player);
+
+            Assert.Equal(expectedCount, game.Players[player].FaceDownPile.Count);
+        }
+
+        private static SnapGame SetUpGame(int players, int turns)
         {
             TestPack pack = new TestPack();
 
-            SnapGame game = new SnapGame(pack, 2);
+            SnapGame game = new SnapGame(pack, players);
 
             TurnTaker<SnapPlayer> turnTaker = new TurnTaker<SnapPlayer>(game.Players);
 
-            turnTaker.CurrentPlayer.FlipCard();
-            turnTaker.NextPlayer();
+            for (int i = 0; i < turns; i++)
+            {
+                turnTaker.CurrentPlayer.FlipCard();
+                turnTaker.NextPlayer();
+            }
 
-            turnTaker.CurrentPlayer.FlipCard();
-            turnTaker.NextPlayer();
-
-            Assert.True(game.CheckForSnap());
+            return game;
         }
+
+
     }
 }

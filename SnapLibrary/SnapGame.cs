@@ -22,5 +22,10 @@ namespace PlayingCardLibrary
 
             return matchingRank.Count == 1;
         }
+
+        public void DoSnap(int player)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
