@@ -1,4 +1,4 @@
-﻿using PlayingCardLibrary;
+﻿using CardGames;
 using System;
 using System.Collections.Generic;
 using System.Text;

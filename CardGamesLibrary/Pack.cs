@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace PlayingCardLibrary
+namespace CardGames
 {
     public class Pack : Pile
     {

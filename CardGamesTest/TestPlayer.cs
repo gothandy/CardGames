@@ -1,4 +1,4 @@
-﻿using PlayingCardLibrary;
+﻿using CardGames;
 
 namespace CardGamesTest
 {

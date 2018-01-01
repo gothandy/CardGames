@@ -1,4 +1,4 @@
-﻿using CardGamesLibrary;
+﻿using CardGames;
 using Xunit;
 
 namespace CardGamesTest

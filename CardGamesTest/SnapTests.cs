@@ -1,5 +1,5 @@
-﻿using CardGamesLibrary;
-using PlayingCardLibrary;
+﻿using CardGames;
+using CardGames;
 using System;
 using Xunit;
 

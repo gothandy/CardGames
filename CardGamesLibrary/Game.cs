@@ -1,10 +1,10 @@
-﻿using CardGamesLibrary;
+﻿using CardGames;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace PlayingCardLibrary
+namespace CardGames
 {
 
     public class Game<T> where T : new()

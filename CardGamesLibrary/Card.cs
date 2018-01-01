@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PlayingCardLibrary
+namespace CardGames
 {
     public class Card
     {

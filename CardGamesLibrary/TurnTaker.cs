@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CardGamesLibrary
+namespace CardGames
 {
     public class TurnTaker<T>
     {

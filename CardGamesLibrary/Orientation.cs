@@ -1,4 +1,4 @@
-﻿namespace PlayingCardLibrary
+﻿namespace CardGames
 {
     public enum Orientation
     {
