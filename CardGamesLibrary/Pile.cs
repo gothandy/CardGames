@@ -57,6 +57,11 @@ namespace CardGames
             orientation = FlipOrientation();
         }
 
+        public void Shuffle(int numberOfTimes)
+        {
+            throw (new NotImplementedException());
+        }
+
         private Orientation FlipOrientation()
         {
             return (Orientation)(((int)orientation + 1) % 2);

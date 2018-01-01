@@ -27,17 +27,9 @@ namespace CardGames
                 // No Snap?
                 throw (new NotImplementedException());
             }
-            if (matchingRanks.Count == 1)
+            else if (matchingRanks.Count == 1)
             {
-                List<Pile> faceUpPiles = Players.Select(p => p.FaceUpPile).ToList();
-
-                foreach(Pile pile in faceUpPiles)
-                {
-                    if (pile.TopCard.Rank == matchingRanks[0])
-                    {
-                        Players[player].FaceDownPile.AddToBottom(pile);
-                    }
-                }
+                WinningPlayerGetsMatchingCardPiles(player, matchingRanks);
             }
             else
             {
@@ -45,7 +37,20 @@ namespace CardGames
                 throw (new NotImplementedException());
             }
         }
-        
+
+        private void WinningPlayerGetsMatchingCardPiles(int player, List<Rank> matchingRanks)
+        {
+            List<Pile> faceUpPiles = Players.Select(p => p.FaceUpPile).ToList();
+
+            foreach (Pile pile in faceUpPiles)
+            {
+                if (pile.TopCard.Rank == matchingRanks[0])
+                {
+                    Players[player].FaceDownPile.AddToBottom(pile);
+                }
+            }
+        }
+
         private List<Rank> GetMatchingRank()
         {
             IEnumerable<Card> topCards = Players.Select(p => p.FaceUpPile.TopCard);
@@ -56,7 +61,5 @@ namespace CardGames
               .ToList();
             return matchingRank;
         }
-
-
     }
 }
