@@ -24,7 +24,7 @@ namespace CardGames
         public Card TopCard => cards[cards.Count - 1];
 
         public Card this[int index] => cards[index];
-
+        
         internal void Add(Card card)
         {
             cards.Add(card);
@@ -51,15 +51,20 @@ namespace CardGames
             cards.RemoveAll(c => true);
         }
 
-        public IEnumerator<Card> GetEnumerator()
-        {
-            return ((IEnumerable<Card>)cards).GetEnumerator();
-        }
-
         public void Flip()
         {
             cards.Reverse();
-            orientation = (Orientation)(((int)orientation + 1) % 2);
+            orientation = FlipOrientation();
+        }
+
+        private Orientation FlipOrientation()
+        {
+            return (Orientation)(((int)orientation + 1) % 2);
+        }
+
+        public IEnumerator<Card> GetEnumerator()
+        {
+            return ((IEnumerable<Card>)cards).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
