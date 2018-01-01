@@ -1,9 +1,8 @@
-﻿using CardGames;
-using Xunit;
+﻿using Xunit;
 
-namespace CardGamesTest
+namespace CardGames
 {
-    public class GameTests
+    public class TurnTakerTests
     {
         [Theory]
         [InlineData(2, 0, 0)]

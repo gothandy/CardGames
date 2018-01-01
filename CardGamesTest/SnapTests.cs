@@ -3,7 +3,7 @@ using CardGames;
 using System;
 using Xunit;
 
-namespace CardGamesTest
+namespace CardGames
 {
     public class SnapTests
     {

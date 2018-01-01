@@ -1,6 +1,6 @@
 ﻿using CardGames;
 
-namespace CardGamesTest
+namespace CardGames
 {
     public class TestPlayer
     {
