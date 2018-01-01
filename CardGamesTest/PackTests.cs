@@ -7,12 +7,13 @@ namespace CardGames
     public class PackTests
     {
 
-        [Fact]
-        public void Count()
+        [Theory]
+        [InlineData(52)]
+        public void Count(int count)
         {
             Pack pack = new Pack();
 
-            Assert.Equal(52, pack.Count);
+            Assert.Equal(count, pack.Count);
         }
 
         [Fact]
@@ -25,11 +26,11 @@ namespace CardGames
 
 
         [Theory]
-        [InlineData(Rank.Ace, Suit.Spade, 0)]
-        [InlineData(Rank.Two, Suit.Spade, 1)]
-        [InlineData(Rank.Queen, Suit.Heart, 50)]
-        [InlineData(Rank.King, Suit.Heart, 51)]
-        public void BottomCard(Rank rank, Suit suit, int index)
+        [InlineData(0, Rank.Ace, Suit.Spade)]
+        [InlineData(1, Rank.Two, Suit.Spade)]
+        [InlineData(50, Rank.Queen, Suit.Heart)]
+        [InlineData(51, Rank.King, Suit.Heart)]
+        public void NewPack(int index, Rank rank, Suit suit)
         {
             Pack pack = new Pack();
 

@@ -8,12 +8,14 @@ namespace CardGames
     {
         protected List<Card> cards = new List<Card>();
 
-        public Orientation Orientation;
+        private Orientation orientation;
 
         public Pile(Orientation orientation)
         {
-            this.Orientation = orientation;
+            this.orientation = orientation;
         }
+
+        public Orientation Orientation => orientation;
 
         public bool Empty => cards.Count == 0;
 
@@ -49,6 +51,12 @@ namespace CardGames
         public IEnumerator<Card> GetEnumerator()
         {
             return ((IEnumerable<Card>)cards).GetEnumerator();
+        }
+
+        public void Flip()
+        {
+            cards.Reverse();
+            orientation = (Orientation)(((int)orientation + 1) % 2);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
