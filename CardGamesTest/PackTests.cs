@@ -4,7 +4,7 @@ using Xunit;
 
 namespace CardGamesTest
 {
-    public class NewPackTests
+    public class PackTests
     {
 
         [Fact]

@@ -8,28 +8,6 @@ namespace CardGamesTest
     {
 
         [Fact]
-        public void NewPile()
-        {
-            Pile pile = new Pile(Orientation.FaceUp);
-
-            Assert.True(pile.Empty);
-        }
-
-        [Fact]
-        public void PlacePackTopCardOnPile()
-        {
-            Pack pack = new Pack();
-            Pile pile = new Pile(Orientation.FaceUp);
-
-            pack.PlaceTopCard(pile);
-
-            Assert.Equal(51, pack.Count);
-            Assert.Equal(1, pile.Count);
-            Assert.Equal(new Card(Rank.King, Suit.Heart), pile[0]);
-
-        }
-
-        [Fact]
         public void NewPlayer()
         {
             TestPlayer player = new TestPlayer();
