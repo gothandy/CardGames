@@ -1,4 +1,5 @@
 ﻿using CardGames;
+using ConsoleLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,13 +10,16 @@ namespace SnapConsole
     {
         static void Main(string[] args)
         {
+            ConsoleStandard standard = new ConsoleStandard();
+            ConsoleHelper helper = new ConsoleHelper(standard);
+
             Shuffler shuffler = new Shuffler(new Random());
 
             Pack pack = new Pack();
 
             shuffler.Shuffle(pack, 52);
 
-            int noOfPlayers = Helper.AskQuestion<int>("How many Players?");
+            int noOfPlayers = helper.AskQuestion<int>("How many Players?");
 
             List<ConsoleKey> playerKeys = Helper.GetPlayerKeys(noOfPlayers);
 
