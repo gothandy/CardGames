@@ -14,6 +14,7 @@ namespace ConsoleLibrary
         
         public T AskQuestion<T>(string question, params object[] args) where T : struct
         {
+            int fail = 0;
             while (true)
             {
                 console.WriteLine(question, args);
@@ -26,6 +27,10 @@ namespace ConsoleLibrary
                 {
                     return (T)converter.ConvertFromString(possibleAnswer);
                 }
+
+                fail++;
+
+                if (fail > 100) throw (new Exception("Possible infinite loop encountered."));
 
                 console.Clear();
             }

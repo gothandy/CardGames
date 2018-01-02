@@ -1,7 +1,7 @@
 ﻿using ConsoleLibrary;
 using System.Collections.Generic;
 
-namespace CardGamesTest
+namespace CardGames
 {
     public class TestConsole : IConsole
     {
