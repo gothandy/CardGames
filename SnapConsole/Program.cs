@@ -1,5 +1,6 @@
 ﻿using CardGames;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace SnapConsole
@@ -8,53 +9,23 @@ namespace SnapConsole
     {
         static void Main(string[] args)
         {
-
+            Shuffler shuffler = new Shuffler(new Random());
 
             Pack pack = new Pack();
 
-            Shuffler shuffler = new Shuffler(new Random());
-
             shuffler.Shuffle(pack, 52);
 
-            WritePack(pack);
+            int noOfPlayers = Helper.AskQuestion<int>("How many Players?");
 
-            int howManyPlayers = AskQuestion<int>("How many Players?");
+            List<ConsoleKey> playerKeys = Helper.GetPlayerKeys(noOfPlayers);
 
-            SnapGame game = new SnapGame(pack, howManyPlayers);
+            SnapGame game = new SnapGame(pack, noOfPlayers);
 
+            TurnTaker<SnapPlayer> turnTaker = new TurnTaker<SnapPlayer>(game.Players);
 
-        }
+            Helper.WriteGame(game);
 
-        private static void WritePack(Pack pack)
-        {
-            Console.Clear();
-            foreach (Card card in pack)
-            {
-                Console.WriteLine(card);
-            }
-            Console.ReadKey(true);
-            Console.Clear();
-        }
-
-        private static T AskQuestion<T>(string question) where T : struct
-        {
-            
-
-            while(true)
-            {
-                Console.WriteLine(question);
-
-                string possibleAnswer = Console.ReadLine();
-
-                TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
-
-                if (converter != null && converter.IsValid(possibleAnswer))
-                {
-                    return (T)converter.ConvertFromString(possibleAnswer);
-                }
-
-                Console.Clear();
-            }
+            Helper.TakeTurn(game, turnTaker, playerKeys);
         }
     }
 }
