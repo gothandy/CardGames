@@ -90,15 +90,6 @@ namespace CardGames
         }
 
         [Theory]
-        [InlineData(1)]
-        public void Shuffle(int numberOfTimes)
-        {
-            TestPack pack = new TestPack();
-
-            pack.Shuffle(numberOfTimes);
-        }
-
-        [Theory]
         [InlineData(0, 51, Rank.King, Suit.Heart, Rank.Ace, Suit.Spade)]
         [InlineData(51, 0, Rank.Ace, Suit.Spade, Rank.King, Suit.Heart)]
         [InlineData(1, 50, Rank.King, Suit.Club, Rank.Ace, Suit.Diamond)]

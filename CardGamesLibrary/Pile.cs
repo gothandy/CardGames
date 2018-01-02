@@ -57,39 +57,11 @@ namespace CardGames
             orientation = FlipOrientation();
         }
 
-        public void Shuffle(int numberOfTimes)
-        {
-            Random random = new Random();
-
-            for (int i = 0; i < numberOfTimes; i++)
-            {
-                RandomCardSwap(random);
-            }
-        }
-
-        private void RandomCardSwap(Random random)
-        {
-            int from = random.Next(cards.Count);
-            int to = RandomNotEqualTo(random, from);
-
-            Swap(from, to);
-        }
-
         public void Swap(int from, int to)
         {
             Card card = cards[from];
             cards[from] = cards[to];
             cards[to] = card;
-        }
-
-        private int RandomNotEqualTo(Random random, int from)
-        {
-            while (true)
-            {
-                int to = random.Next(cards.Count);
-
-                if (to != from) return to;
-            }
         }
 
         private Orientation FlipOrientation()

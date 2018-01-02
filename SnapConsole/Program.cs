@@ -12,7 +12,9 @@ namespace SnapConsole
 
             Pack pack = new Pack();
 
-            pack.Shuffle(52);
+            Shuffler shuffler = new Shuffler(new Random());
+
+            shuffler.Shuffle(pack, 52);
 
             WritePack(pack);
 
