@@ -88,5 +88,29 @@ namespace CardGames
 
             Assert.Equal<Card>(new Card(rank, suit), game.Players[0].Hand[index]);
         }
+
+        [Theory]
+        [InlineData(1)]
+        public void Shuffle(int numberOfTimes)
+        {
+            TestPack pack = new TestPack();
+
+            pack.Shuffle(numberOfTimes);
+        }
+
+        [Theory]
+        [InlineData(0, 51, Rank.King, Suit.Heart, Rank.Ace, Suit.Spade)]
+        [InlineData(51, 0, Rank.Ace, Suit.Spade, Rank.King, Suit.Heart)]
+        [InlineData(1, 50, Rank.King, Suit.Club, Rank.Ace, Suit.Diamond)]
+        [InlineData(50, 1, Rank.Ace, Suit.Diamond, Rank.King, Suit.Club)]
+        public void Swap(int i1, int i2, Rank r1, Suit s1, Rank r2, Suit s2)
+        {
+            TestPack pack = new TestPack();
+
+            pack.Swap(i1, i2);
+
+            Assert.Equal(new Card(r1, s1), pack[i1]);
+            Assert.Equal(new Card(r2, s2), pack[i2]);
+        }
     }
 }

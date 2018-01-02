@@ -8,13 +8,30 @@ namespace SnapConsole
     {
         static void Main(string[] args)
         {
-            int howManyPlayers = AskQuestion<int>("How many Players?");
+
 
             Pack pack = new Pack();
 
             pack.Shuffle(52);
 
+            WritePack(pack);
+
+            int howManyPlayers = AskQuestion<int>("How many Players?");
+
             SnapGame game = new SnapGame(pack, howManyPlayers);
+
+
+        }
+
+        private static void WritePack(Pack pack)
+        {
+            Console.Clear();
+            foreach (Card card in pack)
+            {
+                Console.WriteLine(card);
+            }
+            Console.ReadKey(true);
+            Console.Clear();
         }
 
         private static T AskQuestion<T>(string question) where T : struct
