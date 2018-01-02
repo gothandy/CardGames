@@ -2,7 +2,7 @@
 
 namespace CardGames
 {
-    public class TestPackTest
+    public class TestPackTests
     {
         [Theory]
         [InlineData(0, Rank.Ace, Suit.Spade)]

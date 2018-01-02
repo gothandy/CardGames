@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CardGamesLibrary\CardGamesLibrary.csproj" />
+    <ProjectReference Include="..\ConsoleLibrary\ConsoleLibrary.csproj" />
     <ProjectReference Include="..\SnapLibrary\SnapLibrary.csproj" />
   </ItemGroup>
 

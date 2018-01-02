@@ -3,7 +3,7 @@ using Xunit;
 
 namespace CardGamesTest
 {
-    public class RandomTest
+    public class RandomTests
     {
         // Use Zero Seed for running Random tests i.e. for Shuffle
         [Theory]
