@@ -7,8 +7,6 @@ namespace CardGames
 {
     public class ConsoleHelperTests
     {
-
-        
         [Fact]
         public void AskQuestionNoParams()
         {
@@ -18,7 +16,7 @@ namespace CardGames
 
             ConsoleHelper helper = new ConsoleHelper(test);
 
-            helper.AskQuestion<int>("Question?");
+            helper.AskQuestionLine<int>("Question?");
 
             Assert.Single(test.Output);
             Assert.Equal("Question?", test.Output[0]);
@@ -34,7 +32,7 @@ namespace CardGames
 
             ConsoleHelper helper = new ConsoleHelper(test);
 
-            helper.AskQuestion<int>(question, value);
+            helper.AskQuestionLine<int>(question, value);
 
             Assert.Equal(expected, test.Output[0]);
         }
@@ -50,7 +48,7 @@ namespace CardGames
 
             ConsoleHelper helper = new ConsoleHelper(test);
 
-            int actual = helper.AskQuestion<int>("Question?");
+            int actual = helper.AskQuestionLine<int>("Question?");
 
             Assert.Equal<int>(expected, actual);
         }
@@ -68,7 +66,7 @@ namespace CardGames
 
             ConsoleHelper helper = new ConsoleHelper(test);
 
-            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => helper.AskQuestion<int>("Question?"));
+            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => helper.AskQuestionLine<int>("Question?"));
 
             Assert.Equal(3, test.Output.Count);
             Assert.Equal("Question?", test.Output[0]);
@@ -88,10 +86,21 @@ namespace CardGames
 
             ConsoleHelper helper = new ConsoleHelper(test);
 
-            Exception ex = Assert.Throws<Exception>(() => helper.AskQuestion<int>("Question?"));
+            Exception ex = Assert.Throws<Exception>(() => helper.AskQuestionLine<int>("Question?"));
 
             Assert.Equal("Possible infinite loop encountered.", ex.Message);
         }
 
+        [Fact]
+        public void Clear()
+        {
+            TestConsole test = new TestConsole();
+
+            ConsoleHelper helper = new ConsoleHelper(test);
+
+            helper.Clear();
+
+            Assert.IsType<TestConsoleClear>(test.Output[0]);
+        }
     }
 }

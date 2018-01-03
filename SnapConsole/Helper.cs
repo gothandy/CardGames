@@ -1,4 +1,5 @@
 ﻿using CardGames;
+using ConsoleLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,22 +22,28 @@ namespace SnapConsole
 
 
 
-        internal static List<ConsoleKey> GetPlayerKeys(int noOfPlayers)
+        internal static List<ConsoleKey> GetPlayerKeys(ConsoleHelper consoleHelper, int noOfPlayers)
         {
             List<ConsoleKey> keys = new List<ConsoleKey>();
 
-            Console.Clear();
+            consoleHelper.Clear();
 
-            foreach(int index in Enumerable.Range(1, noOfPlayers))
+            for (int i = 1; i <= noOfPlayers; i++)
             {
-                Console.Write("Player {0} press your snap key now: ", index);
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                Console.WriteLine(keyInfo.KeyChar.ToString().ToUpper());
+                ConsoleKey key = AskQuestionKey("Player {0} press your snap key now: ", i);
 
-                keys.Add(keyInfo.Key);
+                keys.Add(key);
             }
 
             return keys;
+        }
+
+        private static ConsoleKey AskQuestionKey(string question, params object[] args)
+        {
+            Console.Write(question, args);
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+            Console.WriteLine(keyInfo.KeyChar.ToString().ToUpper());
+            return keyInfo.Key;
         }
 
         internal static void WriteGame(SnapGame game)

@@ -9,8 +9,8 @@ namespace SnapConsole
     {
         static void Main(string[] args)
         {
-            ConsoleStandard standard = new ConsoleStandard();
-            ConsoleHelper helper = new ConsoleHelper(standard);
+            ConsoleStandard consoleStandard = new ConsoleStandard();
+            ConsoleHelper consoleHelper = new ConsoleHelper(consoleStandard);
 
             Shuffler shuffler = new Shuffler(new Random());
 
@@ -18,9 +18,9 @@ namespace SnapConsole
 
             shuffler.Shuffle(pack, 52);
 
-            int noOfPlayers = helper.AskQuestion<int>("How many Players?");
+            int noOfPlayers = consoleHelper.AskQuestionLine<int>("How many Players?");
 
-            List<ConsoleKey> playerKeys = Helper.GetPlayerKeys(noOfPlayers);
+            List<ConsoleKey> playerKeys = Helper.GetPlayerKeys(consoleHelper, noOfPlayers);
 
             SnapGame game = new SnapGame(pack, noOfPlayers);
 

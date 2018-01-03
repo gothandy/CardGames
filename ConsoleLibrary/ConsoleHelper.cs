@@ -12,7 +12,7 @@ namespace ConsoleLibrary
             this.console = console;
         }
         
-        public T AskQuestion<T>(string question, params object[] args) where T : struct
+        public T AskQuestionLine<T>(string question, params object[] args) where T : struct
         {
             for(int fail=0; fail <100; fail++)
             {
@@ -28,6 +28,11 @@ namespace ConsoleLibrary
             }
 
             throw (new Exception("Possible infinite loop encountered."));
+        }
+
+        public void Clear()
+        {
+            console.Clear();
         }
 
         private bool IsValid<T>(string value) where T : struct
