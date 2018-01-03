@@ -7,27 +7,20 @@ namespace CardGames
 {
     public class ConsoleHelperTests
     {
-        [Fact]
-        public void AskQuestionNeverInt()
-        {
-            TestConsole test = new TestConsole("");
 
-            ConsoleHelper helper = new ConsoleHelper(test);
-
-            Exception ex = Assert.Throws<Exception>(() => helper.AskQuestion<int>("Question?"));
-
-            Assert.Equal("Possible infinite loop encountered.", ex.Message);
-        }
         
         [Fact]
         public void AskQuestionNoParams()
         {
-            TestConsole test = new TestConsole("1");
+            TestConsole test = new TestConsole();
+
+            test.Input.Add("1");
 
             ConsoleHelper helper = new ConsoleHelper(test);
 
             helper.AskQuestion<int>("Question?");
 
+            Assert.Single(test.Output);
             Assert.Equal("Question?", test.Output[0]);
         }
 
@@ -35,7 +28,9 @@ namespace CardGames
         [InlineData("Player 1", "Player {0}", 1)]
         public void AskQuestionIntValue(string expected, string question, int value)
         {
-            TestConsole test = new TestConsole("1");
+            TestConsole test = new TestConsole();
+
+            test.Input.Add("1");
 
             ConsoleHelper helper = new ConsoleHelper(test);
 
@@ -50,13 +45,32 @@ namespace CardGames
         [InlineData("4.0", 4)]
         public void AskQuestionOutputCorrect(string input, int expected)
         {
-            TestConsole test = new TestConsole(input);
+            TestConsole test = new TestConsole();
+
+            test.Input.Add(input);
 
             ConsoleHelper helper = new ConsoleHelper(test);
 
             int actual = helper.AskQuestion<int>("Question?");
 
             Assert.Equal<int>(expected, actual);
+        }
+
+        [Fact]
+        public void AskQuestionNeverInt()
+        {
+            TestConsole test = new TestConsole();
+
+            for (int i = 0; i < 101; i++)
+            {
+                test.Input.Add("not a number");
+            }            
+
+            ConsoleHelper helper = new ConsoleHelper(test);
+
+            Exception ex = Assert.Throws<Exception>(() => helper.AskQuestion<int>("Question?"));
+
+            Assert.Equal("Possible infinite loop encountered.", ex.Message);
         }
 
     }

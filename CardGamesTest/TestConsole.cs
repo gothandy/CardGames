@@ -3,24 +3,22 @@ using System.Collections.Generic;
 
 namespace CardGames
 {
+    public class TestConsoleClear { }
+    
     public class TestConsole : IConsole
     {
-        private string line;
-
-        public List<string> Output = new List<string>();
-
-        public TestConsole(string line)
-        {
-            this.line = line;
-        }
+        public List<object> Output = new List<object>();
+        public List<object> Input = new List<object>();
 
         public void Clear()
         {
-            // Need to test somehow.
+            Output.Add(new TestConsoleClear());
         }
 
         public string ReadLine()
         {
+            string line = (string)Input[0];
+            Input.RemoveAt(0);
             return line;
         }
 
