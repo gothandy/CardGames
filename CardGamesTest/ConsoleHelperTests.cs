@@ -42,8 +42,7 @@ namespace CardGames
         [Theory]
         [InlineData("2", 2)]
         [InlineData("3", 3)]
-        [InlineData("4.0", 4)]
-        public void AskQuestionOutputCorrect(string input, int expected)
+        public void AskQuestionOutputInt(string input, int expected)
         {
             TestConsole test = new TestConsole();
 
@@ -54,6 +53,27 @@ namespace CardGames
             int actual = helper.AskQuestion<int>("Question?");
 
             Assert.Equal<int>(expected, actual);
+        }
+
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("not a number")]
+        [InlineData("4.0")]
+        public void AskQuestionOutputNotInt(string input)
+        {
+            TestConsole test = new TestConsole();
+
+            test.Input.Add(input);
+
+            ConsoleHelper helper = new ConsoleHelper(test);
+
+            Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => helper.AskQuestion<int>("Question?"));
+
+            Assert.Equal(3, test.Output.Count);
+            Assert.Equal("Question?", test.Output[0]);
+            Assert.IsType<TestConsoleClear>(test.Output[1]);
+            Assert.Equal("Question?", test.Output[2]);
         }
 
         [Fact]
