@@ -1,5 +1,6 @@
 ﻿using ConsoleLibrary;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using Xunit;
 
@@ -121,6 +122,28 @@ namespace CardGames
             Assert.Equal<ConsoleKey>(infoKey, actualKey);
             Assert.Equal(expected, test.Output[0]);
             Assert.Equal(String.Empty, test.Output[1]);
+        }
+
+        [Fact]
+        public void CaptureKeyPress()
+        {
+            TestConsole test = new TestConsole();
+            test.Input.Add(new ConsoleKeyInfo('a', ConsoleKey.A, false, false, false));
+            test.Input.Add(new ConsoleKeyInfo('b', ConsoleKey.B, false, false, false));
+            test.Input.Add(new ConsoleKeyInfo('c', ConsoleKey.C, false, false, false));
+            test.Input.Add(new ConsoleKeyInfo('d', ConsoleKey.D, false, false, false));
+            test.Input.Add(new ConsoleKeyInfo('e', ConsoleKey.E, false, false, false));
+
+            List<ConsoleKeyTime> keyTimeList = new List<ConsoleKeyTime>();
+
+            ConsoleHelper helper = new ConsoleHelper(test);
+
+            for (int i = 0; i < 5; i++)
+            {
+                keyTimeList.Add(helper.PressKeyTime());
+            }
+
+
         }
     }
 }

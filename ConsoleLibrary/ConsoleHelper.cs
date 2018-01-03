@@ -6,6 +6,7 @@ namespace ConsoleLibrary
     public class ConsoleHelper
     {
         private IConsole console;
+        private DateTime lastKeyPress;
 
         public ConsoleHelper(IConsole console)
         {
@@ -56,6 +57,11 @@ namespace ConsoleLibrary
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
 
             return (T)converter.ConvertFromString(value);
+        }
+
+        public ConsoleKeyTime PressKeyTime()
+        {
+            throw new NotImplementedException();
         }
     }
 }
