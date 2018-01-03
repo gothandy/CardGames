@@ -2,13 +2,12 @@
 using ConsoleLibrary;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
 
 namespace SnapConsole
 {
     internal static class Helper
     {
+
         internal static void WritePack(Pack pack)
         {
             Console.Clear();
@@ -19,8 +18,6 @@ namespace SnapConsole
             Console.ReadKey(true);
             Console.Clear();
         }
-
-
 
         internal static List<ConsoleKey> GetPlayerKeys(ConsoleHelper consoleHelper, int noOfPlayers)
         {
@@ -67,8 +64,6 @@ namespace SnapConsole
             {
 
             }
-
-            
         }
     }
 }
