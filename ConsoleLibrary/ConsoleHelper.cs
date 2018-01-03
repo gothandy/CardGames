@@ -33,7 +33,7 @@ namespace ConsoleLibrary
         public ConsoleKey AskQuestionKey(string question, params object[] args)
         {
             console.Write(question, args);
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+            ConsoleKeyInfo keyInfo = console.ReadKey(true);
             console.WriteLine(keyInfo.KeyChar.ToString().ToUpper());
             return keyInfo.Key;
 

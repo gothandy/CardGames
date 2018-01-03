@@ -9,6 +9,11 @@ namespace ConsoleLibrary
             Console.Clear();
         }
 
+        public ConsoleKeyInfo ReadKey(bool intercept)
+        {
+            return Console.ReadKey(intercept);
+        }
+
         public string ReadLine()
         {
             return Console.ReadLine();

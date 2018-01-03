@@ -64,5 +64,19 @@ namespace CardGamesTest
             Assert.IsType<TestConsoleClear>(test.Output[1]);
             Assert.Equal(String.Empty, test.Output[2]);
         }
+
+        [Fact]
+        public void ReadKey()
+        {
+            TestConsole test = new TestConsole();
+
+            test.Input.Add(new ConsoleKeyInfo('A', ConsoleKey.A, true, false, false));
+
+            ConsoleKeyInfo keyInfo = test.ReadKey(false);
+
+            Assert.Single(test.Output);
+            Assert.Equal<ConsoleKey>(ConsoleKey.A, keyInfo.Key);
+            Assert.Equal("A", test.Output[0]);
+        }
     }
 }

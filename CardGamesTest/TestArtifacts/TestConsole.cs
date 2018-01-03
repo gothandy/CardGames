@@ -22,6 +22,15 @@ namespace CardGames
             Output.Add(String.Empty);
         }
 
+        public ConsoleKeyInfo ReadKey(bool intercept)
+        {
+            ConsoleKeyInfo keyInfo = (ConsoleKeyInfo)Input[0];
+
+            if (!intercept) Write(keyInfo.KeyChar.ToString());
+
+            return keyInfo;
+        }
+
         public string ReadLine()
         {
             string line = (string)Input[0];
