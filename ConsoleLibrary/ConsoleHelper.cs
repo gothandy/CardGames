@@ -10,6 +10,7 @@ namespace ConsoleLibrary
 
         public ConsoleHelper(IConsole console)
         {
+            this.lastKeyPress = DateTime.Now;
             this.console = console;
         }
         
@@ -61,7 +62,13 @@ namespace ConsoleLibrary
 
         public ConsoleKeyTime PressKeyTime()
         {
-            throw new NotImplementedException();
+            ConsoleKeyInfo keyInfo = console.ReadKey(true);
+
+            DateTime keyPressTime = DateTime.Now;
+            TimeSpan timeSinceLast = keyPressTime.Subtract(lastKeyPress);
+            lastKeyPress = keyPressTime;
+
+            return new ConsoleKeyTime(keyInfo.Key, timeSinceLast);
         }
     }
 }

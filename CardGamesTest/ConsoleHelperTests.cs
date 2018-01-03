@@ -143,7 +143,7 @@ namespace CardGames
                 keyTimeList.Add(helper.PressKeyTime());
             }
 
-            Assert.Equal<TimeSpan>(new TimeSpan(0), keyTimeList[0].TimeSpan);
+            Assert.NotEqual<TimeSpan>(new TimeSpan(0), keyTimeList[0].TimeSpan);
             Assert.NotEqual<TimeSpan>(new TimeSpan(0), keyTimeList[1].TimeSpan);
             Assert.NotEqual<TimeSpan>(new TimeSpan(0), keyTimeList[2].TimeSpan);
             Assert.NotEqual<TimeSpan>(new TimeSpan(0), keyTimeList[3].TimeSpan);
