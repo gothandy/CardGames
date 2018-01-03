@@ -1,4 +1,5 @@
 ﻿using ConsoleLibrary;
+using System;
 using System.Collections.Generic;
 
 namespace CardGames
@@ -10,9 +11,15 @@ namespace CardGames
         public List<object> Output = new List<object>();
         public List<object> Input = new List<object>();
 
+        public TestConsole()
+        {
+            Output.Add(String.Empty);
+        }
+
         public void Clear()
         {
             Output.Add(new TestConsoleClear());
+            Output.Add(String.Empty);
         }
 
         public string ReadLine()
@@ -22,9 +29,27 @@ namespace CardGames
             return line;
         }
 
-        public void WriteLine(string question, object[] args)
+        public void Write(string value)
         {
-            Output.Add(string.Format(question, args));
+            if (Output.Count == 0) Output.Add(String.Empty);
+
+            Output[Output.Count - 1] = String.Concat(Output[Output.Count - 1], value);
+        }
+
+        public void Write(string format, object[] args)
+        {
+            this.Write(String.Format(format, args));
+        }
+
+        public void WriteLine(string value)
+        {
+            this.Write(value);
+            this.Output.Add(String.Empty);
+        }
+
+        public void WriteLine(string format, object[] args)
+        {
+            this.WriteLine(string.Format(format, args));
         }
     }
 }

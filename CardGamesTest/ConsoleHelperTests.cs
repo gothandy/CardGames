@@ -18,7 +18,7 @@ namespace CardGames
 
             helper.AskQuestionLine<int>("Question?");
 
-            Assert.Single(test.Output);
+            Assert.Equal(2, test.Output.Count);
             Assert.Equal("Question?", test.Output[0]);
         }
 
@@ -68,10 +68,12 @@ namespace CardGames
 
             Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => helper.AskQuestionLine<int>("Question?"));
 
-            Assert.Equal(3, test.Output.Count);
+            Assert.Equal(5, test.Output.Count);
             Assert.Equal("Question?", test.Output[0]);
-            Assert.IsType<TestConsoleClear>(test.Output[1]);
-            Assert.Equal("Question?", test.Output[2]);
+            Assert.Equal(String.Empty, test.Output[1]);
+            Assert.IsType<TestConsoleClear>(test.Output[2]);
+            Assert.Equal("Question?", test.Output[3]);
+            Assert.Equal(String.Empty, test.Output[4]);
         }
 
         [Fact]
@@ -100,7 +102,7 @@ namespace CardGames
 
             helper.Clear();
 
-            Assert.IsType<TestConsoleClear>(test.Output[0]);
+            Assert.IsType<TestConsoleClear>(test.Output[1]);
         }
     }
 }

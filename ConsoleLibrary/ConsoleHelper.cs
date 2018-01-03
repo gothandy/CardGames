@@ -30,6 +30,15 @@ namespace ConsoleLibrary
             throw (new Exception("Possible infinite loop encountered."));
         }
 
+        public ConsoleKey AskQuestionKey(string question, params object[] args)
+        {
+            console.Write(question, args);
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+            console.WriteLine(keyInfo.KeyChar.ToString().ToUpper());
+            return keyInfo.Key;
+
+        }
+
         public void Clear()
         {
             console.Clear();

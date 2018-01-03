@@ -14,9 +14,24 @@ namespace ConsoleLibrary
             return Console.ReadLine();
         }
 
-        public void WriteLine(string question, object[] args)
+        public void Write(string value)
         {
-            Console.WriteLine(question, args);
+            Console.Write(value);
+        }
+
+        public void Write(string format, object[] args)
+        {
+            Console.Write(format, args);
+        }
+
+        public void WriteLine(string value)
+        {
+            Console.WriteLine(value);
+        }
+
+        public void WriteLine(string format, object[] args)
+        {
+            Console.WriteLine(format, args);
         }
     }
 }
