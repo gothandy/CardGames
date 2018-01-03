@@ -104,5 +104,23 @@ namespace CardGames
 
             Assert.IsType<TestConsoleClear>(test.Output[1]);
         }
+
+        [Theory]
+        [InlineData(' ', ConsoleKey.Spacebar, false, "Press Spacebar: ", "Press Spacebar:  ")]
+        [InlineData('a', ConsoleKey.A, false, "Press A: ", "Press A: A")]
+        [InlineData('A', ConsoleKey.A, true, "Press A: ", "Press A: A")]
+        public void AskQuestionKey(char infoChar, ConsoleKey infoKey, bool infoShift, string question, string expected)
+        {
+            TestConsole test = new TestConsole();
+            test.Input.Add(new ConsoleKeyInfo(infoChar, infoKey, infoShift, false, false));
+
+            ConsoleHelper helper = new ConsoleHelper(test);
+            ConsoleKey actualKey = helper.AskQuestionKey(question);
+
+            Assert.Equal(2, test.Output.Count);
+            Assert.Equal<ConsoleKey>(infoKey, actualKey);
+            Assert.Equal(expected, test.Output[0]);
+            Assert.Equal(String.Empty, test.Output[1]);
+        }
     }
 }
