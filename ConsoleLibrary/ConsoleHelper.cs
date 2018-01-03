@@ -14,26 +14,34 @@ namespace ConsoleLibrary
         
         public T AskQuestion<T>(string question, params object[] args) where T : struct
         {
-            int fail = 0;
-            while (true)
+            for(int fail=0; fail <100; fail++)
             {
                 console.WriteLine(question, args);
 
                 string possibleAnswer = console.ReadLine();
+                
+                bool isValid = IsValid<T>(possibleAnswer);
 
-                TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
-
-                if (converter != null && converter.IsValid(possibleAnswer))
-                {
-                    return (T)converter.ConvertFromString(possibleAnswer);
-                }
-
-                fail++;
-
-                if (fail > 100) throw (new Exception("Possible infinite loop encountered."));
+                if (isValid) return ConvertFromString<T>(possibleAnswer);
 
                 console.Clear();
             }
+
+            throw (new Exception("Possible infinite loop encountered."));
+        }
+
+        private bool IsValid<T>(string value) where T : struct
+        {
+            TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
+
+            return (converter != null && converter.IsValid(value));
+        }
+
+        private T ConvertFromString<T>(string value) where T : struct
+        {
+            TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
+
+            return (T)converter.ConvertFromString(value);
         }
     }
 }
