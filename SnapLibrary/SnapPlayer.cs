@@ -16,5 +16,10 @@ namespace CardGames
 
             FaceDownPile.PlaceTopCardOn(FaceUpPile);
         }
+
+        internal SnapGame game;
+
+        public int Index => game.Players.IndexOf(this);
+        public bool IsCurrent => (game.turnTaker.CurrentPlayer == this);
     }
 }

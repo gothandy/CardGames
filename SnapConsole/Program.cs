@@ -7,6 +7,8 @@ namespace SnapConsole
 {
     class Program
     {
+        private static DateTime snapTimer = DateTime.MinValue;
+
         static void Main(string[] args)
         {
             Pack pack = new Pack();
@@ -15,7 +17,13 @@ namespace SnapConsole
 
             shuffler.Shuffle(pack, 52);
 
-            SnapGame game = new SnapGame(pack, 2);
+            Console.WriteLine("Number of Players? 2/3");
+            int players = (Console.ReadKey(true).Key == ConsoleKey.D2 ? 2 : 3);
+
+            SnapGame game = new SnapGame(pack, players);
+
+            List<ConsoleKey> snapKeys = new List<ConsoleKey>() { ConsoleKey.Q, ConsoleKey.P, ConsoleKey.V };
+            List<ConsoleKey> turnKeys = new List<ConsoleKey>() { ConsoleKey.A, ConsoleKey.L, ConsoleKey.B };
 
             Write(game);
 
@@ -23,36 +31,30 @@ namespace SnapConsole
             {
                 ConsoleKey key = Console.ReadKey(true).Key;
 
-                switch(key)
+                int snapIndex = snapKeys.IndexOf(key);
+                int turnIndex = turnKeys.IndexOf(key);
+
+                if (snapIndex != -1)
                 {
-                    case ConsoleKey.Spacebar:
-                        game.TakeTurn();
-                        Write(game);
-                        break;
-
-                    case ConsoleKey.Q:
-                        Snap(game, 0);
-                        break;
-
-                    case ConsoleKey.P:
-                        Snap(game, 1);
-                        break;
+                    Snap(game, snapIndex);
+                }
+                else if (turnIndex != -1)
+                {
+                    Turn(game, turnIndex);
                 }
             }
 
             Console.WriteLine("We have a winner!");
         }
 
+
+
         private static void Write(SnapGame game)
         {
             Console.Clear();
-
             WriteTurnAndCardCounts(game);
-
             Console.WriteLine();
-
             WriteTopCards(game);
-
             Console.WriteLine();
         }
 
@@ -62,9 +64,11 @@ namespace SnapConsole
 
             foreach (SnapPlayer player in game.Players)
             {
-                int index = game.Players.IndexOf(player);
-
-                Console.WriteLine("P{0} Face Up {1}, Face Down {2}", index, player.FaceUpPile.Count, player.FaceDownPile.Count);
+                Console.WriteLine("P{0} Face Up {1}, Face Down {2}, Total {3}",
+                    player.Index + 1,
+                    player.FaceUpPile.Count,
+                    player.FaceDownPile.Count,
+                    player.FaceUpPile.Count + player.FaceDownPile.Count);
             }
         }
 
@@ -72,15 +76,10 @@ namespace SnapConsole
         {
             foreach (SnapPlayer player in game.Players)
             {
-                int index = game.Players.IndexOf(player);
-                string currentIndicator = String.Empty;
-                string topCard = "{no cards}";
+                string currentIndicator = player.IsCurrent ? " <<" : String.Empty;
+                string topCard = player.FaceUpPile.Empty ? "{no cards}" : player.FaceUpPile.TopCard.ToString();
 
-                if (player.FaceUpPile.Count != 0) topCard = player.FaceUpPile.TopCard.ToString();
-
-                if (game.CurrentPlayer == index) currentIndicator = " <<";
-
-                Console.WriteLine("P{0} {1}{2}", index, topCard, currentIndicator);
+                Console.WriteLine("P{0} {1}{2}", player.Index + 1, topCard, currentIndicator);
             }
         }
 
@@ -90,11 +89,29 @@ namespace SnapConsole
             {
                 game.SnapWithWinner(playerIndex);
                 Write(game);
-                Console.WriteLine("Player {0} SNAP!!", playerIndex);
+                Console.WriteLine("Player {0} SNAP!!", playerIndex + 1);
+                snapTimer = DateTime.Now;
             }
             else
             {
-                Console.WriteLine("Player {0} DOH!!", playerIndex);
+
+                Console.Write("Player {0} DOH!!", playerIndex + 1);
+                if (snapTimer != DateTime.MinValue) Console.Write(" {0:0} milliseconds too late!", DateTime.Now.Subtract(snapTimer).TotalMilliseconds);
+                Console.WriteLine();
+            }
+        }
+
+        private static void Turn(SnapGame game, int turnIndex)
+        {
+            if (game.CurrentPlayer == turnIndex)
+            {
+                game.TakeTurn();
+                Write(game);
+                snapTimer = DateTime.MinValue;
+            }
+            else
+            {
+                Console.WriteLine("Player {0} DOH!! Not your turn!", turnIndex + 1);
             }
         }
     }

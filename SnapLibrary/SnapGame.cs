@@ -9,11 +9,13 @@ namespace CardGames
         private bool gameOver = false;
         private int turnCount = 0;
 
-        private TurnTaker<SnapPlayer> turnTaker;
+        internal TurnTaker<SnapPlayer> turnTaker;
         public Pile SnapPot = new Pile(Orientation.FaceUp);
 
         public SnapGame(Pile pile, int playerCount) : base(playerCount)
         {
+            foreach (SnapPlayer player in Players) player.game = this;
+
             this.DealAll(pile, p => p.FaceDownPile);
 
             turnTaker = new TurnTaker<SnapPlayer>(this.Players);
@@ -21,7 +23,6 @@ namespace CardGames
 
         public void TakeTurn()
         {
-
             turnTaker.CurrentPlayer.FlipCard();
             turnTaker.NextPlayer();
 
