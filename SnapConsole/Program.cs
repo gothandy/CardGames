@@ -2,6 +2,7 @@
 using ConsoleLibrary;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace SnapConsole
 {
@@ -22,7 +23,7 @@ namespace SnapConsole
 
             SnapGame game = new SnapGame(pack, players);
 
-            List<ConsoleKey> snapKeys = new List<ConsoleKey>() { ConsoleKey.Q, ConsoleKey.P, ConsoleKey.V };
+            List<ConsoleKey> snapKeys = new List<ConsoleKey>() { ConsoleKey.Q, ConsoleKey.P, ConsoleKey.P };
             List<ConsoleKey> turnKeys = new List<ConsoleKey>() { ConsoleKey.A, ConsoleKey.L, ConsoleKey.B };
 
             Write(game);
@@ -45,6 +46,7 @@ namespace SnapConsole
             }
 
             Console.WriteLine("We have a winner!");
+            Thread.Sleep(5000);
         }
 
 
