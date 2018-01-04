@@ -12,11 +12,27 @@ namespace CardGames
         internal TurnTaker<SnapPlayer> turnTaker;
         public Pile SnapPot = new Pile(Orientation.FaceUp);
 
-        public SnapGame(Pile pile, int playerCount) : base(playerCount)
+        public SnapGame(int playerCount) : base(playerCount)
+        {
+            Pack pack = new Pack();
+
+            Shuffler shuffler = new Shuffler(new Random());
+
+            shuffler.Shuffle(pack, 52);
+
+            SetupGame(pack);
+        }
+
+        public SnapGame(Pile pack, int playerCount) : base(playerCount)
+        {
+            SetupGame(pack);
+        }
+
+        private void SetupGame(Pile pack)
         {
             foreach (SnapPlayer player in Players) player.game = this;
 
-            this.DealAll(pile, p => p.FaceDownPile);
+            this.DealAll(pack, p => p.FaceDownPile);
 
             turnTaker = new TurnTaker<SnapPlayer>(this.Players);
         }
