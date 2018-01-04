@@ -103,5 +103,13 @@ namespace CardGames
             Assert.Equal(new Card(r1, s1), pack[i1]);
             Assert.Equal(new Card(r2, s2), pack[i2]);
         }
+
+        [Fact]
+        public void EmptyPileTopCardNull()
+        {
+            Pile pile = new Pile(Orientation.FaceUp);
+
+            Assert.Null(pile.TopCard);
+        }
     }
 }
