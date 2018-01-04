@@ -24,6 +24,10 @@ namespace SnapTests
 
         [Theory]
         [InlineData(2, 2, 0, 27)]
+        [InlineData(4, 2, 0, 14)]
+        [InlineData(4, 2, 2, 15)]
+        [InlineData(4, 3, 3, 16)]
+        [InlineData(4, 5, 3, 15)]
         public void SnapWithWinner(int players, int turns, int player, int expectedCount)
         {
             TestPack pack = new TestPack();
