@@ -34,11 +34,13 @@ namespace CardGames
 
         public int Turns => turnCount;
 
-        public bool CheckForSnap()
+        public bool IsSnapPossible()
         {
             List<Rank> matchingRank = GetMatchingRank();
 
-            return matchingRank.Count == 1;
+            bool value = (matchingRank.Count == 1);
+
+            return value;
         }
 
         public void SnapWithWinner(int playerIndex)

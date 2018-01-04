@@ -20,7 +20,7 @@ namespace SnapTests
             {
                 game.TakeTurn();
 
-                if (game.CheckForSnap()) game.SnapWithWinner(0);
+                if (game.IsSnapPossible()) game.SnapWithWinner(0);
             }
 
             Assert.Equal(52, game.Players[0].FaceDownPile.Count);
@@ -40,7 +40,7 @@ namespace SnapTests
             while (!game.GameOver && game.Turns < turns)
             {
                 game.TakeTurn();
-                if (game.CheckForSnap()) game.SnapWithWinner(0);
+                if (game.IsSnapPossible()) game.SnapWithWinner(0);
             }
 
             Assert.False(game.GameOver);

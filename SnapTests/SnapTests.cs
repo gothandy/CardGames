@@ -6,6 +6,8 @@ namespace SnapTests
     public class SnapTests
     {
         [Theory]
+        [InlineData(2, 0, false)]
+        [InlineData(2, 1, false)]
         [InlineData(2, 2, true)]
         [InlineData(2, 5, false)]
         [InlineData(4, 2, true)]
@@ -19,7 +21,7 @@ namespace SnapTests
 
             for (int i = 0; i < turns; i++) game.TakeTurn();
 
-            Assert.Equal<bool>(expected, game.CheckForSnap());
+            Assert.Equal<bool>(expected, game.IsSnapPossible());
         }
 
         [Theory]
