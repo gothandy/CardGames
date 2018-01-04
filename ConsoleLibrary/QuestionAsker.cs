@@ -41,11 +41,6 @@ namespace ConsoleLibrary
 
         }
 
-        public void Clear()
-        {
-            console.Clear();
-        }
-
         private bool IsValid<T>(string value) where T : struct
         {
             TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));

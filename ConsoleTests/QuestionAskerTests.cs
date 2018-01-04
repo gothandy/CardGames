@@ -93,18 +93,6 @@ namespace CardGames
             Assert.Equal("Possible infinite loop encountered.", ex.Message);
         }
 
-        [Fact]
-        public void Clear()
-        {
-            TestConsole test = new TestConsole();
-
-            QuestionAsker helper = new QuestionAsker(test);
-
-            helper.Clear();
-
-            Assert.IsType<TestConsoleClear>(test.Output[1]);
-        }
-
         [Theory]
         [InlineData(' ', ConsoleKey.Spacebar, false, "Press Spacebar: ", "Press Spacebar:  ")]
         [InlineData('a', ConsoleKey.A, false, "Press A: ", "Press A: A")]

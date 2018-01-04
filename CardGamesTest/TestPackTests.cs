@@ -18,6 +18,6 @@ namespace CardGames
             TestPack pack = new TestPack();
 
             Assert.Equal<Card>(new Card(rank, suit), pack[index]);
-        }       
+        }
     }
 }

@@ -23,8 +23,6 @@ namespace SnapConsole
         {
             List<ConsoleKey> keys = new List<ConsoleKey>();
 
-            consoleHelper.Clear();
-
             for (int i = 1; i <= noOfPlayers; i++)
             {
                 ConsoleKey key = consoleHelper.AskQuestionKey("Player {0} press your snap key now: ", i);

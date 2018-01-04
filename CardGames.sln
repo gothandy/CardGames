@@ -16,7 +16,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnapLibrary", "SnapLibrary\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnapConsole", "SnapConsole\SnapConsole.csproj", "{185BF4D3-FCCD-47F8-8928-B4D1EB71516D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLibrary", "ConsoleLibrary\ConsoleLibrary.csproj", "{780C52AA-564F-412D-9027-2D19B3DF03F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleLibrary", "ConsoleLibrary\ConsoleLibrary.csproj", "{780C52AA-564F-412D-9027-2D19B3DF03F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTests", "ConsoleTests\ConsoleTests.csproj", "{43EE5DAB-068D-4940-AAFE-1781BC795174}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnapTests", "SnapTests\SnapTests.csproj", "{4502ECE0-C594-4F1D-AB53-91E789E5E8EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +48,14 @@ Global
 		{780C52AA-564F-412D-9027-2D19B3DF03F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{780C52AA-564F-412D-9027-2D19B3DF03F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{780C52AA-564F-412D-9027-2D19B3DF03F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43EE5DAB-068D-4940-AAFE-1781BC795174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43EE5DAB-068D-4940-AAFE-1781BC795174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43EE5DAB-068D-4940-AAFE-1781BC795174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43EE5DAB-068D-4940-AAFE-1781BC795174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4502ECE0-C594-4F1D-AB53-91E789E5E8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4502ECE0-C594-4F1D-AB53-91E789E5E8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4502ECE0-C594-4F1D-AB53-91E789E5E8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4502ECE0-C594-4F1D-AB53-91E789E5E8EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
