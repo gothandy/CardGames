@@ -31,7 +31,8 @@ namespace SnapTests
         [InlineData(4)]
         [InlineData(52)]
         [InlineData(53)]
-        public void NoWinners(int turns)
+        [InlineData(104)]
+        public void NoWinnersAndFlipHand(int turns)
         {
             Pack pack = new Pack();
             SnapGame game = new SnapGame(pack, 4);

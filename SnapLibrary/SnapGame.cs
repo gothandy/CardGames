@@ -108,6 +108,7 @@ namespace CardGames
               .Where(g => g.Count() > 1)
               .Select(y => y.Key)
               .ToList();
+
             return matchingRank;
         }
     }
