@@ -3,14 +3,14 @@ using System.ComponentModel;
 
 namespace ConsoleLibrary
 {
-    public class ConsoleHelper
+    public class QuestionAsker
     {
         private IConsole console;
         private DateTime lastKeyPress;
 
-        public ConsoleHelper(IConsole console)
+        public QuestionAsker(IConsole console)
         {
-            this.lastKeyPress = DateTime.Now;
+            lastKeyPress = DateTime.Now;
             this.console = console;
         }
         

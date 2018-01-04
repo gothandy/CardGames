@@ -2,7 +2,7 @@
 
 namespace ConsoleLibrary
 {
-    public class ConsoleStandard : IConsole
+    public class StandardConsole : IConsole
     {
         public void Clear()
         {

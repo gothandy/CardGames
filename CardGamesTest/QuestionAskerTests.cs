@@ -1,12 +1,11 @@
 ﻿using ConsoleLibrary;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using Xunit;
 
 namespace CardGames
 {
-    public class ConsoleHelperTests
+    public class QuestionAskerTests
     {
         [Fact]
         public void AskQuestionNoParams()
@@ -15,7 +14,7 @@ namespace CardGames
 
             test.Input.Add("1");
 
-            ConsoleHelper helper = new ConsoleHelper(test);
+            QuestionAsker helper = new QuestionAsker(test);
 
             helper.AskQuestionLine<int>("Question?");
 
@@ -31,7 +30,7 @@ namespace CardGames
 
             test.Input.Add("1");
 
-            ConsoleHelper helper = new ConsoleHelper(test);
+            QuestionAsker helper = new QuestionAsker(test);
 
             helper.AskQuestionLine<int>(question, value);
 
@@ -47,7 +46,7 @@ namespace CardGames
 
             test.Input.Add(input);
 
-            ConsoleHelper helper = new ConsoleHelper(test);
+            QuestionAsker helper = new QuestionAsker(test);
 
             int actual = helper.AskQuestionLine<int>("Question?");
 
@@ -65,7 +64,7 @@ namespace CardGames
 
             test.Input.Add(input);
 
-            ConsoleHelper helper = new ConsoleHelper(test);
+            QuestionAsker helper = new QuestionAsker(test);
 
             Exception ex = Assert.Throws<ArgumentOutOfRangeException>(() => helper.AskQuestionLine<int>("Question?"));
 
@@ -87,7 +86,7 @@ namespace CardGames
                 test.Input.Add("not a number");
             }            
 
-            ConsoleHelper helper = new ConsoleHelper(test);
+            QuestionAsker helper = new QuestionAsker(test);
 
             Exception ex = Assert.Throws<Exception>(() => helper.AskQuestionLine<int>("Question?"));
 
@@ -99,7 +98,7 @@ namespace CardGames
         {
             TestConsole test = new TestConsole();
 
-            ConsoleHelper helper = new ConsoleHelper(test);
+            QuestionAsker helper = new QuestionAsker(test);
 
             helper.Clear();
 
@@ -115,7 +114,7 @@ namespace CardGames
             TestConsole test = new TestConsole();
             test.Input.Add(new ConsoleKeyInfo(infoChar, infoKey, infoShift, false, false));
 
-            ConsoleHelper helper = new ConsoleHelper(test);
+            QuestionAsker helper = new QuestionAsker(test);
             ConsoleKey actualKey = helper.AskQuestionKey(question);
 
             Assert.Equal(2, test.Output.Count);
@@ -136,7 +135,7 @@ namespace CardGames
 
             List<ConsoleKeyTime> keyTimeList = new List<ConsoleKeyTime>();
 
-            ConsoleHelper helper = new ConsoleHelper(test);
+            QuestionAsker helper = new QuestionAsker(test);
 
             for (int i = 0; i < 5; i++)
             {

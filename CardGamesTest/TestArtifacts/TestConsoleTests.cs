@@ -1,8 +1,7 @@
-﻿using CardGames;
-using System;
+﻿using System;
 using Xunit;
 
-namespace CardGamesTest
+namespace CardGames
 {
     public class TestConsoleTests
     {

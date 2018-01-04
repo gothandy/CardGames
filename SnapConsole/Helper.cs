@@ -19,7 +19,7 @@ namespace SnapConsole
             Console.Clear();
         }
 
-        internal static List<ConsoleKey> GetPlayerKeys(ConsoleHelper consoleHelper, int noOfPlayers)
+        internal static List<ConsoleKey> GetPlayerKeys(QuestionAsker consoleHelper, int noOfPlayers)
         {
             List<ConsoleKey> keys = new List<ConsoleKey>();
 
@@ -56,7 +56,7 @@ namespace SnapConsole
 
         }
 
-        internal static void TakeTurn(ConsoleHelper consoleHelper, SnapGame game, TurnTaker<SnapPlayer> turnTaker, List<ConsoleKey> playerKeys)
+        internal static void TakeTurn(QuestionAsker consoleHelper, SnapGame game, TurnTaker<SnapPlayer> turnTaker, List<ConsoleKey> playerKeys)
         {
             /* 
             while(!game.End)

@@ -9,8 +9,8 @@ namespace SnapConsole
     {
         static void Main(string[] args)
         {
-            ConsoleStandard consoleStandard = new ConsoleStandard();
-            ConsoleHelper consoleHelper = new ConsoleHelper(consoleStandard);
+            StandardConsole consoleStandard = new StandardConsole();
+            QuestionAsker consoleHelper = new QuestionAsker(consoleStandard);
 
             Shuffler shuffler = new Shuffler(new Random());
 
