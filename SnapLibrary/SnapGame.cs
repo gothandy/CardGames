@@ -6,12 +6,23 @@ namespace CardGames
 {
     public class SnapGame : Game<SnapPlayer>
     {
+        private TurnTaker<SnapPlayer> turnTaker;
         public Pile SnapPot = new Pile(Orientation.FaceUp);
 
         public SnapGame(Pile pile, int playerCount) : base(playerCount)
         {
             this.DealAll(pile, p => p.FaceDownPile);
+
+            turnTaker = new TurnTaker<SnapPlayer>(this.Players);
         }
+
+        public void TakeTurn()
+        {
+            turnTaker.CurrentPlayer.FlipCard();
+            turnTaker.NextPlayer();
+        }
+
+        public int CurrentPlayer => this.Players.IndexOf(turnTaker.CurrentPlayer);
 
         public bool CheckForSnap()
         {
@@ -20,7 +31,19 @@ namespace CardGames
             return matchingRank.Count == 1;
         }
 
-        public void SnapWithWinner(int player)
+        public void SnapWithWinner(int playerIndex)
+        {
+            Pile winningPile = Players[playerIndex].FaceDownPile;
+
+            PlaceMatchingPilesTo(winningPile);
+        }
+
+        public void SnapWithoutWinner()
+        {
+            PlaceMatchingPilesTo(SnapPot);
+        }
+
+        private void PlaceMatchingPilesTo(Pile winningPile)
         {
             List<Rank> matchingRanks = GetMatchingRank();
 
@@ -31,7 +54,7 @@ namespace CardGames
             }
             else if (matchingRanks.Count == 1)
             {
-                WinningPlayerGetsMatchingCardPiles(player, matchingRanks);
+                MatchingPilesAddTo(winningPile, matchingRanks);
             }
             else
             {
@@ -40,12 +63,7 @@ namespace CardGames
             }
         }
 
-        public void SnapWithoutWinner()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void WinningPlayerGetsMatchingCardPiles(int player, List<Rank> matchingRanks)
+        private void MatchingPilesAddTo(Pile winningPile, List<Rank> matchingRanks)
         {
             List<Pile> faceUpPiles = Players.Select(p => p.FaceUpPile).ToList();
 
@@ -53,7 +71,7 @@ namespace CardGames
             {
                 if (pile.TopCard.Rank == matchingRanks[0])
                 {
-                    Players[player].FaceDownPile.AddToBottom(pile);
+                    winningPile.AddToBottom(pile);
                 }
             }
         }

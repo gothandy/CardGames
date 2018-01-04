@@ -3,7 +3,7 @@ using Xunit;
 
 namespace SnapTests
 {
-    public class FlipTests
+    public class PlayerTests
     {
         [Fact]
         public void FlipCardSinglePlayer()
