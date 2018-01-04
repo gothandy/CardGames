@@ -20,7 +20,7 @@ namespace CardGames
             TestPack pack = new TestPack();
             Pile pile = new Pile(Orientation.FaceUp);
 
-            pack.PlaceTopCard(pile);
+            pack.PlaceTopCardOn(pile);
 
             Assert.Equal(51, pack.Count);
             Assert.Equal(1, pile.Count);
@@ -32,7 +32,7 @@ namespace CardGames
         {
             TestGame game = new TestGame(4, 13);
 
-            game.Players[0].Hand.AddToBottom(game.Players[1].Hand);
+            game.Players[1].Hand.AddToBottomOf(game.Players[0].Hand);
 
             Assert.True(game.Players[1].Hand.Empty);
         }
@@ -46,7 +46,7 @@ namespace CardGames
         {
             TestGame game = new TestGame(4, 13);
 
-            game.Players[0].Hand.AddToBottom(game.Players[1].Hand);
+            game.Players[1].Hand.AddToBottomOf(game.Players[0].Hand);
 
             Assert.Equal<Card>(new Card(rank, suit), game.Players[0].Hand[index]);
         }
@@ -84,7 +84,7 @@ namespace CardGames
 
             game.Players[1].Hand.Flip();
 
-            game.Players[0].Hand.AddToBottom(game.Players[1].Hand);
+            game.Players[1].Hand.AddToBottomOf(game.Players[0].Hand);
 
             Assert.Equal<Card>(new Card(rank, suit), game.Players[0].Hand[index]);
         }

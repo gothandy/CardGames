@@ -9,7 +9,12 @@ namespace CardGames
 
         public void FlipCard()
         {
-            this.FaceDownPile.PlaceTopCard(FaceUpPile);
+            if (FaceDownPile.Count == 0)
+            {
+                FaceUpPile.AddToBottomOf(FaceDownPile);
+            }
+
+            FaceDownPile.PlaceTopCardOn(FaceUpPile);
         }
     }
 }

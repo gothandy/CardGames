@@ -25,7 +25,7 @@ namespace CardGames
             {
                 foreach (T player in players)
                 {
-                    pile.PlaceTopCard(pileToDealTo.Invoke(player));
+                    pile.PlaceTopCardOn(pileToDealTo.Invoke(player));
                 }
             }
         }
@@ -36,7 +36,7 @@ namespace CardGames
 
             while (!pile.Empty)
             {
-                pile.PlaceTopCard(pileToDealTo.Invoke(turnTaker.CurrentPlayer));
+                pile.PlaceTopCardOn(pileToDealTo.Invoke(turnTaker.CurrentPlayer));
 
                 turnTaker.NextPlayer();
             }

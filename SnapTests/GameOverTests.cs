@@ -8,24 +8,41 @@ namespace SnapTests
     {
         [Theory]
         [InlineData(2)]
+        [InlineData(3)]
         [InlineData(4)]
+        [InlineData(5)]
         public void GameOver(int players)
         {
             TestPack pack = new TestPack();
-
             SnapGame game = new SnapGame(pack, players);
 
-            while(!game.GameOver)
+            while(!game.GameOver || game.Turns > 52)
             {
                 game.TakeTurn();
-                game.TakeTurn();
-                game.SnapWithWinner(0);
 
-                if (game.Turns > 100) throw (new Exception("Taking too many turns."));
+                if (game.CheckForSnap()) game.SnapWithWinner(0);
             }
 
             Assert.Equal(52, game.Players[0].FaceDownPile.Count);
             Assert.Equal(52, game.Turns);
+        }
+
+        [Theory]
+        [InlineData(4)]
+        [InlineData(52)]
+        [InlineData(53)]
+        public void NoWinners(int turns)
+        {
+            Pack pack = new Pack();
+            SnapGame game = new SnapGame(pack, 4);
+
+            while (!game.GameOver && game.Turns < turns)
+            {
+                game.TakeTurn();
+                if (game.CheckForSnap()) game.SnapWithWinner(0);
+            }
+
+            Assert.False(game.GameOver);
         }
     }
 }

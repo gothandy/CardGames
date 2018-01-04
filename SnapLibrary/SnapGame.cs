@@ -21,6 +21,7 @@ namespace CardGames
 
         public void TakeTurn()
         {
+
             turnTaker.CurrentPlayer.FlipCard();
             turnTaker.NextPlayer();
 
@@ -94,7 +95,7 @@ namespace CardGames
             {
                 if (pile.TopCard != null && pile.TopCard.Rank == matchingRanks[0])
                 {
-                    winningPile.AddToBottom(pile);
+                    pile.AddToBottomOf(winningPile);
                 }
             }
         }

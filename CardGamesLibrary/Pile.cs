@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CardGamesLibrary;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace CardGames
 {
@@ -37,25 +39,29 @@ namespace CardGames
             cards.Add(card);
         }
 
-        public void PlaceTopCard(Pile pile)
+        public void PlaceTopCardOn(Pile pile)
         {
-            pile.Add(this.TopCard);
+            if (cards.Count == 0) throw (new EmptyPileException());
+
+            pile.Add(TopCard);
 
             cards.RemoveAt(cards.Count - 1);
         }
 
-        public void AddToBottom(Pile pile)
+        public void AddToBottomOf(Pile pile)
         {
-            // Keep the cards the facing the same way when adding
-            if (orientation != pile.Orientation) pile.Flip();
+            if (cards.Count == 0) throw (new EmptyPileException());
 
-            cards.InsertRange(0, pile);
-            pile.RemoveAll();
+            // Keep the cards the facing the same way when adding
+            if (orientation != pile.Orientation) Flip();
+
+            pile.InsertRange(0, cards);
+            cards.RemoveAll(c => true);
         }
 
-        protected void RemoveAll()
+        protected void InsertRange(int index, IEnumerable<Card> collection)
         {
-            cards.RemoveAll(c => true);
+            cards.InsertRange(index, collection);
         }
 
         public void Flip()
@@ -87,3 +93,4 @@ namespace CardGames
         }
     }
 }
+
