@@ -21,7 +21,14 @@ namespace CardGames
 
         public int Count => cards.Count;
 
-        public Card TopCard => cards[cards.Count - 1];
+        public Card TopCard
+        {
+            get
+            {
+                if (cards.Count == 0) return null;
+                return cards[cards.Count - 1];
+            }
+        }
 
         public Card this[int index] => cards[index];
         

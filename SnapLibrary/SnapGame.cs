@@ -92,7 +92,7 @@ namespace CardGames
 
             foreach (Pile pile in faceUpPiles)
             {
-                if (pile.TopCard.Rank == matchingRanks[0])
+                if (pile.TopCard != null && pile.TopCard.Rank == matchingRanks[0])
                 {
                     winningPile.AddToBottom(pile);
                 }
@@ -101,7 +101,7 @@ namespace CardGames
 
         private List<Rank> GetMatchingRank()
         {
-            IEnumerable<Card> topCards = Players.Select(p => p.FaceUpPile.TopCard);
+            IEnumerable<Card> topCards = Players.Select(p => p.FaceUpPile.TopCard).Where(c => c != null);
 
             List<Rank> matchingRank = topCards.GroupBy(c => c.Rank)
               .Where(g => g.Count() > 1)

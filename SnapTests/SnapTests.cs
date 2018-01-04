@@ -9,6 +9,8 @@ namespace SnapTests
         [InlineData(2, 2, true)]
         [InlineData(2, 5, false)]
         [InlineData(4, 2, true)]
+        [InlineData(4, 3, true)]
+        [InlineData(4, 4, true)]
         public void CheckForSnap(int players, int turns, bool expected)
         {
             TestPack pack = new TestPack();
