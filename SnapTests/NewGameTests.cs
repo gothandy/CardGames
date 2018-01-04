@@ -12,7 +12,7 @@ namespace SnapTests
         [InlineData(3, 0, 18)]
         [InlineData(3, 2, 17)]
         [InlineData(4, 0, 13)]
-        public void MultiplePlayers(int playerCount, int playerToAssert, int expectedCardCount)
+        public void NewGameAssertCount(int playerCount, int playerToAssert, int expectedCardCount)
         {
             Pack pack = new Pack();
 
@@ -26,7 +26,7 @@ namespace SnapTests
         [InlineData(Rank.Queen, Suit.Heart, 1, 0)]
         [InlineData(Rank.Two, Suit.Spade, 0, 25)]
         [InlineData(Rank.Ace, Suit.Spade, 1, 25)]
-        public void NewGameAssertCardEqual(Rank rank, Suit suit, int player, int index)
+        public void NewGameAssertCards(Rank rank, Suit suit, int player, int index)
         {
             Pack pack = new Pack();
 

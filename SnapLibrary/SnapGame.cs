@@ -6,6 +6,8 @@ namespace CardGames
 {
     public class SnapGame : Game<SnapPlayer>
     {
+        public Pile SnapPot = new Pile(Orientation.FaceUp);
+
         public SnapGame(Pile pile, int playerCount) : base(playerCount)
         {
             this.DealAll(pile, p => p.FaceDownPile);
@@ -18,7 +20,7 @@ namespace CardGames
             return matchingRank.Count == 1;
         }
 
-        public void DoSnap(int player)
+        public void SnapWithWinner(int player)
         {
             List<Rank> matchingRanks = GetMatchingRank();
 
@@ -36,6 +38,11 @@ namespace CardGames
                 // More than one snap Rank, unlikely but possible.
                 throw (new NotImplementedException());
             }
+        }
+
+        public void SnapWithoutWinner()
+        {
+            throw new NotImplementedException();
         }
 
         private void WinningPlayerGetsMatchingCardPiles(int player, List<Rank> matchingRanks)

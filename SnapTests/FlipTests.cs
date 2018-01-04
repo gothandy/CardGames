@@ -6,7 +6,7 @@ namespace SnapTests
     public class FlipTests
     {
         [Fact]
-        public void FlipCard()
+        public void FlipCardSinglePlayer()
         {
             Pack pack = new Pack();
 
@@ -18,7 +18,7 @@ namespace SnapTests
         }
 
         [Fact]
-        public void FlipCardBothPlayers()
+        public void FlipCardTwoPlayers()
         {
             Pack pack = new Pack();
 
