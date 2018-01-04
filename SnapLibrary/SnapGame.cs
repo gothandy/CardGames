@@ -6,6 +6,9 @@ namespace CardGames
 {
     public class SnapGame : Game<SnapPlayer>
     {
+        private bool gameOver = false;
+        private int turnCount = 0;
+
         private TurnTaker<SnapPlayer> turnTaker;
         public Pile SnapPot = new Pile(Orientation.FaceUp);
 
@@ -20,9 +23,15 @@ namespace CardGames
         {
             turnTaker.CurrentPlayer.FlipCard();
             turnTaker.NextPlayer();
+
+            turnCount++;
         }
 
         public int CurrentPlayer => this.Players.IndexOf(turnTaker.CurrentPlayer);
+
+        public bool GameOver => gameOver;
+
+        public int Turns => turnCount;
 
         public bool CheckForSnap()
         {
@@ -36,6 +45,20 @@ namespace CardGames
             Pile winningPile = Players[playerIndex].FaceDownPile;
 
             PlaceMatchingPilesTo(winningPile);
+
+            gameOver = NoneEmptyHands() == 1;
+        }
+
+        private int NoneEmptyHands()
+        {
+            int count = 0;
+
+            foreach(SnapPlayer player in Players)
+            {
+                if (player.FaceDownPile.Count > 0 || player.FaceUpPile.Count > 0) count++;
+            }
+
+            return count;
         }
 
         public void SnapWithoutWinner()
