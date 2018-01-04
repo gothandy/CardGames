@@ -28,7 +28,7 @@ namespace SnapConsole
 
             Helper.WriteGame(game);
 
-            Helper.TakeTurn(game, turnTaker, playerKeys);
+            Helper.TakeTurn(consoleHelper, game, turnTaker, playerKeys);
         }
     }
 }

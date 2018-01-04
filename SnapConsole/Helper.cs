@@ -56,14 +56,21 @@ namespace SnapConsole
 
         }
 
-        internal static void TakeTurn(SnapGame game, TurnTaker<SnapPlayer> turnTaker, List<ConsoleKey> playerKeys)
+        internal static void TakeTurn(ConsoleHelper consoleHelper, SnapGame game, TurnTaker<SnapPlayer> turnTaker, List<ConsoleKey> playerKeys)
         {
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-
-            if (keyInfo.Key == ConsoleKey.Spacebar)
+            /* 
+            while(!game.End)
             {
+                while(!KeysBeingPressed())
+                {
 
+                }
+
+                if (PlayersPressSnap > 0) CheckForSnap;
+
+                PlaceNextCard();
             }
+            */
         }
     }
 }
